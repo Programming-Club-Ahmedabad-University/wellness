@@ -1,0 +1,47 @@
+/* Document colours:
+    Green : 91e460
+    Black : 17282f */
+
+#home-body {
+    background-color: white;
+}
+
+.home-heading {
+    text-align: left;
+}
+
+.home-heading-1 {
+    color: #233862;
+    font-size: 72px;
+    line-height: 78px;
+    font-weight: 700;
+}
+
+.home-subtitle{
+    font-size: 16px;
+    color: #EA6C2D;
+    font-style: italic;
+}
+
+@media screen and ( max-width: 1000px) {
+    .home-heading h1 {
+        font-size: 36px;
+        font-weight: 600;
+    }
+}
+
+@media screen and ( max-width: 767px) {
+    .home-heading h1 {
+        text-align: center;
+    }
+}
+
+.home-wave {
+    width: 100vw;
+    position: relative;
+    bottom: -1;
+}
+
+.banner-image {
+    width: 90%;
+}

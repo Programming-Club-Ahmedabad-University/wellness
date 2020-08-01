@@ -1,0 +1,37 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg nav-class sticky-top">
+    <a class="navbar-brand nav-logo-class" href="{% url 'home' %}">
+        <h2 class="ml-5">LOGO</h2>
+    </a>
+    
+    <button class="custom-toggler navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#nav_list" aria-controls="nav_list" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="nav_list">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link nav-link-class" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link nav-link-class" href="{% url 'home' %}">Home</a>
+            </li><li class="nav-item">
+                <a class="nav-link nav-link-class" href="{% url 'home' %}">Home</a>
+            </li><li class="nav-item">
+                <a class="nav-link nav-link-class" href="{% url 'home' %}">Home</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'register' %}">Register</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block head %}
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'account/css/auth.css'%}">
+    <script src="{% static 'account/js/auth.js'%}"></script>
+{% endblock %}
+
+{% block content %}
+    <section id="auth-body">
+        <div class="container my-5 center-mx auth-box">
+            <div class="row">
+                <div class="col-md-6 d-flex align-items-center justify-content-center">
+                    <img src="{% static 'images/login.svg' %}" class="auth-image">
+                </div>
+                <div class="col-md-6">
+                    <form action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="container auth-box-heading">
+                            Register
+                        </div>
+                        {% for field in form %}
+                            <label for="{{field.label}}"><b>{{field.label}}</b></label>
+                            {% if field.label == "Password" %}
+                                <i class="fas fa-eye eye-toggler mx-2"></i>
+                            {% endif %}    
+                            {{field}}
+                        {% endfor %}
+                        <button type="submit" class="btn mt-4 auth-button">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row m-0 p-0">
+            <svg viewBox="0 0 1440 134" class="auth-wave" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 38L60 48.7C120 59 240 81 360 96.7C480 113 600 123 720 96.7C840 70 960 6 1080 0.699995C1200 -5 1320 49 1380 75.3L1440 102V134H1380C1320 134 1200 134 1080 134C960 134 840 134 720 134C600 134 480 134 360 134C240 134 120 134 60 134H0V38Z" fill="#17282f"/>
+            </svg>
+        </div>
+    </section>
+{% endblock %}

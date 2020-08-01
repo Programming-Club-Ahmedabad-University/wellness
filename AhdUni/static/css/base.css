@@ -1,0 +1,96 @@
+/* ------- Contents ---------
+    1. Navbar
+    2. Footer
+    3. Utility Classes 
+----------------------------*/
+
+
+body {
+    font-family: 'Varela Round', sans-serif;
+}
+
+/* ---------------- Navbar ----------------- */
+
+.nav-class {
+    background-color: white;
+    padding: 0px 16px 0px 16px;
+}
+
+.custom-toggler.navbar-toggler {
+    border: 2px solid #233862;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(145, 228, 98)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.nav-logo-class h2{
+    color: #233862;
+    font-weight: 900;
+}
+
+.nav-link-class {
+    color: #233862;
+    font-size: large;
+    text-align: center;
+    margin: 0 2vw 0 2vw;
+}
+
+.nav-link-class:hover,
+.nav-link-class a:hover {
+    background-color: #233862;
+    color: white;
+    transition-duration: 1s;
+    border-radius: 20px;
+}
+
+/* ---------------- Footer ----------------- */
+
+.footer {
+    background-color: white;
+    color: #17282f;
+    text-align: center;
+}
+
+.footer a {
+    background-color: transparent;
+    color: #17282f;
+}
+
+/* ---------------- Utility ----------------- */
+
+.center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.center-y {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center-xy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.center-mx {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.center-my {
+    margin-top: 50%;
+    transform: translateY(-50%);
+}
+
+.center-mxy {
+    margin-left: 50%;
+    margin-top: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+}

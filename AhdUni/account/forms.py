@@ -1,6 +1,17 @@
 from django import forms
 
 from .models import Account
+from django.forms import ModelForm
+from .models import User_Details
+
+
+
+
+class User_DetailsForm(ModelForm):
+    class Meta:
+        model = User_Details
+        fields = '__all__'
+
 
 
 gender_choices =( 

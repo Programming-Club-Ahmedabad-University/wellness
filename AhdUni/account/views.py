@@ -15,8 +15,8 @@ from django.utils.html import strip_tags
 from django.contrib import messages
 from django.db.models import Q
 
-from .forms import LoginForm, RegisterForm
-from .models import Account, AccountManager
+from .forms import LoginForm, RegisterForm, User_DetailsForm
+from .models import Account, AccountManager, User_Details
 from .utils import (generate_token, is_valid_contact,
                     is_valid_enrollment, is_valid_email)
 # Create your views here.
@@ -305,3 +305,19 @@ def logout_view(request, *args, **kwargs):
     logout(request)
     messages.info(request, 'Logged out successfully')
     return redirect('login')
+
+def edit_profile(request):
+   # current_user = request.user
+    #details = User_Details.objects.get(id=current_user.id)
+    form = User_DetailsForm()
+    if request.method =='POST':
+        form = User_DetailsForm(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+   
+    context = {'form': form}
+    
+    return render(request, 'account/edit_profile.html',context)

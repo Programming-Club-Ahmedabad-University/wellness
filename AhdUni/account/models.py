@@ -89,3 +89,67 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return self.is_superuser
+
+
+class User_Details(models.Model):
+    CATEGORY_SG = (
+        ('<5','<5'),
+        ('5-10','5-10'),
+        ('10-15','10-15'),
+        ('15-25','15-25')
+    )
+    CATEGORY_WP = (
+        ('Exercise at home','Exercise at home'),
+        ('Gyming','Gyming'),
+        ('Cycling','Cycling'),
+        ('Walk','Walk'),
+        ('Yoga','Yoga'),
+        ('Zumba','Zumba')
+    )
+
+    CATEGORY_WI = (
+        ('2','2'),
+        ('4','4'),
+        ('6','6'),
+        ('8','8'),
+        ('10','10'),
+    )
+    
+    CATEGORY_REASON = (
+        ('Peer','Peer'),
+        ('Social','Social'),
+        ('Self','Self'),
+        ('Family','Family'),
+        ('Group','Group'),
+    )
+
+    CATEGORY_MED = (
+        ('Yes','Yes'),
+        ('No','No'),
+    )
+
+    CATEGORY_JUNK = (
+        ('Daily','Daily'),
+        ('Every alternate day','Every alternate day'),
+        ('twice a week','twice a week'),
+        ('once a week','once a week'),
+        ('once a month','once a month'),
+    )
+    age             = models.IntegerField()
+    height          = models.IntegerField()
+    current_weight  = models.IntegerField()
+    set_goal        = models.CharField(max_length=200, choices=CATEGORY_SG)
+    workout_patterns= models.CharField(max_length=200,choices=CATEGORY_WP)
+    daily_water     = models.CharField(max_length=200, choices=CATEGORY_WI)
+    #current_diet
+    reason          = models.CharField(max_length=200, choices=CATEGORY_REASON)
+    ongoing_med     = models.CharField(max_length=200, choices=CATEGORY_MED)
+    ongoing_med_reason = models.CharField(max_length=200,null=True)
+    menstural_cycle = models.CharField(max_length=200 , null=True)
+    hours_sleep     = models.IntegerField()
+    smoking         = models.IntegerField()   #how many times a day
+    alcohol         = models.IntegerField() #how many times a month
+    junkfood        = models.CharField(max_length=200,choices=CATEGORY_JUNK)
+
+
+    user = models.ForeignKey(Account,related_name='details', null=True, on_delete = models.SET_NULL)

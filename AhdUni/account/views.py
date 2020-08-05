@@ -18,7 +18,7 @@ from django.db.models import Q
 from .forms import LoginForm, RegisterForm, User_DetailsForm
 from .models import Account, AccountManager, User_Details
 from .utils import (generate_token, is_valid_contact,
-                    is_valid_enrollment, is_valid_email)
+                    is_valid_enrollment)
 # Create your views here.
 
 
@@ -39,7 +39,7 @@ def send_activation_email(request, user, email):
                'token': generate_token.make_token(user)}
     message = render_to_string('account/activate_link.html', context)
     plain_message = strip_tags(message)
-
+    #print(EMAIL_HOST_USER)
     send_mail(subject, plain_message, EMAIL_HOST_USER,
               [email], html_message=message)
 
@@ -75,10 +75,7 @@ class RegisterView(View):
         if user:
             messages.error(request, 'Account already exists!!')
             return redirect('register')
-        if not is_valid_email(email):
-            messages.error(
-                request, 'Enter a valid Ahmedabad University emails id!!')
-            return redirect('register')
+       
         if not is_valid_enrollment(enrollment_number):
             messages.error(request, 'Enter a valid enrollment number!!')
             return redirect('register')

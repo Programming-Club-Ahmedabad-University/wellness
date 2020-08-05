@@ -22,8 +22,8 @@ def is_valid_contact(contact_number):
     else:
         return False
 
-def is_valid_email(email):
-    if email.endswith('ahduni.edu.in'):
-        return True
-    else:
-        return False
+# def is_valid_email(email):
+#     if email.endswith('ahduni.edu.in'):
+#         return True
+#     else:
+#         return False

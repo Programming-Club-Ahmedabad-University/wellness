@@ -66,9 +66,10 @@ class RegisterView(View):
         password = request.POST.get('password')
 
         try:
-            user = Account.objects.get(
-                Q(enrollment_number=enrollment_number) | Q(email=email) |
-                Q(contact_number=contact_number))
+            # user = Account.objects.get(
+            #     Q(enrollment_number=enrollment_number) | Q(email=email) |
+            #     Q(contact_number=contact_number))
+            user = Account.objects.get(email=email)
         except Exception as identifier:
             user = None
 
@@ -115,12 +116,12 @@ class LoginView(View):
         return render(request, 'account/login.html', context)
 
     def post(self, request, *args, **kwargs):
-        enrollment_number = request.POST.get('enrollment_number')
+        email = request.POST.get('email')
         password = request.POST.get('password')
 
         try:
             user = authenticate(
-                request, enrollment_number=enrollment_number, password=password)
+                request, email=email, password=password)
         except Exception as identifier:
             user = None
 
@@ -133,7 +134,7 @@ class LoginView(View):
             messages.info(request, 'Logged in successfully.')
             return redirect('home')
         else:
-            messages.error(request, 'Invalid Enrollment Number or Password.')
+            messages.error(request, 'Invalid Email or Password.')
             return redirect('login')
 
 

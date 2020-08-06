@@ -62,8 +62,10 @@ class Account(AbstractBaseUser):
     # custom_fields
     full_name = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(unique=True)
-    enrollment_number = models.CharField(max_length=20, unique=True)
-    contact_number = models.IntegerField(unique=True, null=True, blank=True)
+    # enrollment_number = models.CharField(max_length=20, unique=True)
+    # contact_number = models.IntegerField(unique=True, null=True, blank=True)
+    enrollment_number = models.CharField(max_length=20)
+    contact_number = models.IntegerField(null=True, blank=True)
     programme = models.CharField(max_length=30, null=True, blank=True)
     gender = models.CharField(max_length=20, choices=gender_choices, null=True, blank=True)
     # required_fields
@@ -72,8 +74,8 @@ class Account(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     is_activated = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'enrollment_number'
-    REQUIRED_FIELDS = ['email']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['enrollment_number']
 
     objects = AccountManager()
 

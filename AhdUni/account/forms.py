@@ -53,9 +53,9 @@ class RegisterForm(forms.Form):
             'contact_number', 'programme', 'gender', 'password' ]
 
 class LoginForm(forms.Form):
-    enrollment_number = forms.CharField(label='Enrollment Number', widget=forms.TextInput(
+    email = forms.CharField(label='Email', widget=forms.TextInput(
         attrs={'class': 'form-control', 'autocomplete': 'off',
-               'placeholder': 'Enrollment Number'}
+               'placeholder': 'Email'}
     ))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'autocomplete': 'off', 'id': 'password',
@@ -63,4 +63,4 @@ class LoginForm(forms.Form):
     ))
 
     class meta:
-        fields = ['enrollment_number', 'email']
+        fields = ['email', 'password']

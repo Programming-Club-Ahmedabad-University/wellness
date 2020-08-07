@@ -143,7 +143,6 @@ class User_Details(models.Model):
     set_goal        = models.CharField(max_length=200, choices=CATEGORY_SG)
     workout_patterns= models.CharField(max_length=200,choices=CATEGORY_WP)
     daily_water     = models.CharField(max_length=200, choices=CATEGORY_WI)
-    #current_diet
     reason          = models.CharField(max_length=200, choices=CATEGORY_REASON)
     ongoing_med     = models.CharField(max_length=200, choices=CATEGORY_MED)
     ongoing_med_reason = models.CharField(max_length=200,null=True)

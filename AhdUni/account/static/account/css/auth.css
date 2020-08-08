@@ -90,3 +90,22 @@ input[type=number] {
     background-color: transparent;
     color: white;
 }
+
+/* For edit-profile-page */
+
+.heading {
+    text-align: center;
+    color: #17282f;
+    background-color: white;
+    border: 2px solid #17282f;
+    max-width: 300px;
+}
+
+.edit-profile-box {
+    border: 2px solid #17282f;
+    border-radius: 20px;
+}
+
+.edit-profile-fields {
+    border: 2px solid #17282f;
+}

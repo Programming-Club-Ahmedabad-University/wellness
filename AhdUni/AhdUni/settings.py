@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third-party app / libraries
+    'multiselectfield',
+
     # our_apps
     'account',
     'home',
-    'multiselectfield',
 ]
 
 MIDDLEWARE = [

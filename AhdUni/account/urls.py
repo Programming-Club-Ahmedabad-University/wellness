@@ -10,6 +10,6 @@ urlpatterns = [
     path('set_password', PasswordSetterView.as_view(), name='set_password'),
     path('set_password/<enrollment_number64>/<token>', PasswordSetterView.as_view(), name='set_password'),
     path('logout', logout_view, name='logout'),
-   path('edit_profile/', views.edit_profile ,name='edit_profile'),
+    path('edit_profile/', views.edit_profile ,name='edit_profile'),
 
 ] 

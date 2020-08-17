@@ -4,14 +4,19 @@
 {% block head %}
     <title>Register</title>
     <link rel="stylesheet" href="{% static 'account/css/auth.css'%}">
-    <script src="{% static 'account/js/auth.js'%}"></script>
+    <script src="{% static 'account/js/edit_profile.js'%}"></script>
 {% endblock %}
 
 {% block content %}
-<form action = '' method = 'POST'>
-    {% csrf_token %}
-    {{form}}
-    <input type = "submit" name ='Update'>
-</form>
+
+<h1 class="mx-auto heading mt-5 shadow">Edit Profile</h1>
+<div class="container my-5 py-5 shadow edit-profile-box">
+
+    <form action = '' method = 'POST'>
+        {% csrf_token %}
+        {{form}}
+        <input type = "submit" name ='Update'>
+    </form>
+</div>
     
 {% endblock %}

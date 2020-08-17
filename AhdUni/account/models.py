@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from multiselectfield import MultiSelectField
 # Create your models here.
 
 DEFAULT_TIME = datetime(2020, 6, 13, 16, 0, 0)
@@ -141,9 +142,14 @@ class User_Details(models.Model):
     height          = models.IntegerField()
     current_weight  = models.IntegerField()
     set_goal        = models.CharField(max_length=200, choices=CATEGORY_SG)
-    workout_patterns= models.CharField(max_length=200,choices=CATEGORY_WP)
+    workout_patterns= MultiSelectField(choices=CATEGORY_WP)
     daily_water     = models.CharField(max_length=200, choices=CATEGORY_WI)
+<<<<<<< HEAD
     reason          = models.CharField(max_length=200, choices=CATEGORY_REASON)
+=======
+    #current_diet
+    reason          = MultiSelectField(max_length=200, choices=CATEGORY_REASON)
+>>>>>>> e81500ad1a45f3a2756341129aee1ea9d6c800df
     ongoing_med     = models.CharField(max_length=200, choices=CATEGORY_MED)
     ongoing_med_reason = models.CharField(max_length=200,null=True)
     menstural_cycle = models.CharField(max_length=200 , null=True)

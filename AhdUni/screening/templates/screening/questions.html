@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+	<title>Screening Test</title>
+	<link rel="stylesheet" href="{% static 'screening/css/questions.css' %}">
+	{% include 'screening/question_script.html' %}
+{% endblock %}
+
+{% block content %}
+	<section id="quesitons-body">
+		<div class="container questions-main">
+			{% if not request.user.is_authenticated %}
+				<h1 class="text-light">You most log in to attempt the test</h1>
+			{% else %}
+				{% if not request.user.is_test_active %}
+					<h1 class="text-light">You must wait a day before attempting the test again</h1>
+				{% else %}
+					<div class="row mx-0 my-5 p-0">
+						<div class="col-xl-3 my-4">
+							<div class="navigation-box shadow pb-3">
+								<div class="box-heading center-mx mb-3">
+									Navigation 
+								</div>
+								<table class="center-mx">
+									<tr>
+										{% for i in range %}
+											<td>
+												<a href="{% url 'questions' %}?page={{ forloop.counter }}">
+													<div class="navigation-circles d-flex justify-content-center align-items-center mx-2 my-2" data-question_number="{{forloop.counter}}">
+														{{ forloop.counter }}
+													</div>
+												</a>
+											</td>
+											{% if forloop.counter|divisibleby:"4" %}
+												</tr><tr>
+											{% endif %}
+										{% endfor %}        
+									</tr>
+								</table>
+								<br><br>
+								<a href="{% url 'submit' %}">
+									<button class="btn btn-light center-mx">Finish</button>
+								</a>
+							</div>
+						</div>
+						<div class="col-xl-9 my-4">
+							<div class="question-box shadow pb-3">
+								<div class="box-heading center-mx mb-3">
+									Question
+								</div>
+								{% for question in object_list %}
+									<div class="center-mx question-text my-3">
+											{{ question.question_text }}
+									</div>
+									<hr class="question-hr">
+									<div class="answer-box p-5">
+										<form action="{% url 'answers' %}" method="post" id="question-form">
+											{% csrf_token %}
+											
+											<input type="hidden" name="answer_no" value="{{ request.GET.page }}">
+											{% if question.answer_type == "1" %}
+												<input type="hidden" name="answer_type" value="1">	
+												<div class="d-flex justify-content-center">
+													{% for radio in 'abcde' %}
+														<div class="form-check form-check-inline">
+															<input class="form-check-input" type="radio" name="value"  value="{{ forloop.counter }}" required>
+															<label class="form-check-label" for="value">{{ forloop.counter }}<label>
+														</div>
+													{% endfor %}
+												</div>
+											{% else %}
+												<input type="hidden" name="answer_type" value="2">
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="yes_or_no" value="1"required>
+													<label class="form-check-label" for="yes_or_no">Yes<label>
+												</div>
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="yes_or_no" value="0"required>
+													<label class="form-check-label" for="yes_or_no">No<label>
+												</div>
+												<textarea name="answer_text" class="form-control my-4" required></textarea>
+											{% endif %}
+											<button type="submit" class="btn btn-light my-5 center-mx">Submit</button>
+										</form>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{% endif %}
+		</div>
+	</section>
+{% endblock %}

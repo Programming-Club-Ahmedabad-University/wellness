@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('', include('account.urls')),
     path('', include('forum.urls')),
+	path('', include('screening.urls')),
 ]
 
 if settings.DEBUG:

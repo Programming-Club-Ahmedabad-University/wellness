@@ -7,8 +7,7 @@
         // For navigatoin panel
         document.querySelectorAll('.navigation-circles').forEach( (circle) => {
             if(answered_questions.includes(parseInt(circle.dataset.question_number))) {
-                circle.style.backgroundColor = '#91e462';
-                circle.style.color = '#17282f'
+                circle.style.backgroundColor = '#fff740';
             } 
             circle.onclick = ()=> {
                 var question_number = circle.dataset.question_number;

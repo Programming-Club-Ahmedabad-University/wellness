@@ -1,9 +1,8 @@
-/* Document colours:
-    Green : 91e460
-    Black : 17282f */
+/* 1573FF */
 
-#home-body {
-    background-color: white;
+body {
+    background-color: #fff740;
+	background-image: none;
 }
 
 .home-heading {
@@ -11,15 +10,14 @@
 }
 
 .home-heading-1 {
-    color: #233862;
+    color: #1573FF;
     font-size: 72px;
     line-height: 78px;
     font-weight: 700;
 }
-
+ 
 .home-subtitle{
     font-size: 16px;
-    color: #EA6C2D;
     font-style: italic;
 }
 
@@ -42,6 +40,6 @@
     bottom: -1;
 }
 
-.banner-image {
+.image-box {
     width: 90%;
 }

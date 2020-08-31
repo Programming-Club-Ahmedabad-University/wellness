@@ -22,29 +22,29 @@ gender_choices =(
 
 class RegisterForm(forms.Form):
     full_name = forms.CharField(label='Fullname', widget=forms.TextInput(
-        attrs={'class': 'form-control', 'autocomplete': 'off',
+        attrs={'class': 'form-control mb-3 fields', 'autocomplete': 'off',
                'placeholder': 'Fullname'}
     ))
     email = forms.EmailField(label='Email', widget=forms.EmailInput(
-        attrs={'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Email'}
+        attrs={'class': 'form-control mb-3 fields', 'autocomplete': 'off', 'placeholder': 'Email'}
     ))
     enrollment_number = forms.CharField(label='Enrollment Number', widget=forms.TextInput(
-        attrs={'class': 'form-control', 'autocomplete': 'off',
+        attrs={'class': 'form-control mb-3 fields', 'autocomplete': 'off',
                'placeholder': 'Enrollment No.'}
-    ))
+    )) 
     contact_number = forms.IntegerField(label='Contact Number', widget=forms.NumberInput(
-        attrs={'class': 'form-control', 'autocomplete': 'off', 'placeholder': 'Contact No.'}
+        attrs={'class': 'form-control mb-3 fields', 'autocomplete': 'off', 'placeholder': 'Contact No.'}
     ))
     programme = forms.CharField(label='Programme', widget=forms.TextInput(
-        attrs={'class': 'form-control', 'autocomplete': 'off',
+        attrs={'class': 'form-control mb-3 fields', 'autocomplete': 'off',
                'placeholder': 'Programme'}
     ))
     gender = forms.ChoiceField(label='Gender', choices=gender_choices,
-        widget=forms.Select(attrs={'class': 'form-control', 
+        widget=forms.Select(attrs={'class': 'form-control mb-3 fields', 
         'autocomplete': 'off', 'placeholder': 'Gender'}
     ))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'autocomplete': 'off', 'id': 'password',
+        attrs={'class': 'form-control mb-3 fields', 'autocomplete': 'off', 'id': 'password',
                'placeholder': 'Password'}
     ))
 
@@ -54,11 +54,11 @@ class RegisterForm(forms.Form):
 
 class LoginForm(forms.Form):
     email = forms.CharField(label='Email', widget=forms.TextInput(
-        attrs={'class': 'form-control', 'autocomplete': 'off',
+        attrs={'class': 'form-control mb-3 fields', 'autocomplete': 'off',
                'placeholder': 'Email'}
     ))
     password = forms.CharField(label='Password', widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'autocomplete': 'off', 'id': 'password',
+        attrs={'class': 'form-control mb-3 fields', 'autocomplete': 'off', 'id': 'password',
                'placeholder': 'Password'}
     ))
 

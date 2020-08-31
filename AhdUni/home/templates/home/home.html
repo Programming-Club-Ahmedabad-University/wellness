@@ -8,27 +8,22 @@
 
 {% block content %}
     <section id="home-body">
-        <!-- <div class="container"> -->
+        <div class="container-fluid d-flex align-items-center main">
             <div class="row m-0 px-0 py-5 banner">
                 <div class="col-md-7 order-1 order-md-2 mx-0 mb-5 p-0 d-flex justify-content-center align-items-center">
-                    <div class="container d-flex justify-content-center align-items-center banner-image-box">
-                        <img src="{% static 'images/banner_img.jpg'%}" class="banner-image" alt="">
+                    <div class="container d-flex justify-content-center align-items-center image-box">
+                        <img src="{% static 'images/banner_img.svg'%}" width="100%">
                     </div>
                 </div>
                 <div class="col-md-5 order-2 order-md-1 d-flex justify-content-center align-items-center mx-0 mb-5 px-2 px-sm-5 pr-md-0 home-heading">
                     <div class="container">
                         <p class="home-heading-1 mb-5">OUR TITLE GOES HERE</p>
-                        <p class="home-subtitle mt-5">
+                        <p class="mt-5 text-secondary home-subtitle">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. A iste tempore eum aspernatur earum et, dicta nihil qui sequi maiores, incidunt distinctio error delectus praesentium aperiam laboriosam, suscipit nemo!
                         </p>
-                </div>
-            </div>
-        </div>
-        <div class="row m-0 p-0">
-            <svg viewBox="0 0 1440 134" class="home-wave" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 38L60 48.7C120 59 240 81 360 96.7C480 113 600 123 720 96.7C840 70 960 6 1080 0.699995C1200 -5 1320 49 1380 75.3L1440 102V134H1380C1320 134 1200 134 1080 134C960 134 840 134 720 134C600 134 480 134 360 134C240 134 120 134 60 134H0V38Z" fill="white"/>
-            </svg>
-        </div>
-    </div>
-    <!-- </section> -->
-    {% endblock %} 
+                	</div>
+            	</div>
+       		</div>
+		</div>
+	</section>
+{% endblock %} 

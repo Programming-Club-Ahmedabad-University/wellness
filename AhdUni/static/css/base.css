@@ -59,6 +59,10 @@ body {
 
 /* ---------------- Utility ----------------- */
 
+.main {
+	min-height: 90vh;
+}
+
 .center-x {
     position: absolute;
     left: 50%;

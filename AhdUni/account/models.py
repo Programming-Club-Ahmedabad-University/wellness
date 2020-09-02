@@ -166,46 +166,6 @@ class Account(AbstractBaseUser):
 
 class UserDetails(models.Model):
     
-<<<<<<< Updated upstream
-    age = models.IntegerField()
-    height = models.IntegerField()
-    weight = models.IntegerField()
-    goal = models.CharField(max_length=200, choices=CATEGORY_SG)
-    workout_pattern = MultiSelectField(choices=CATEGORY_WP)
-    water_consumption = models.CharField(max_length=200, choices=CATEGORY_WI)
-    # current_diet
-    motivation = MultiSelectField(max_length=200, choices=CATEGORY_REASON)
-    ongoing_med = models.CharField(max_length=200, choices=CATEGORY_MED)
-    ongoing_med_reason = models.CharField(max_length=200, null=True)
-    menstural_cycle = models.CharField(max_length=200, null=True)
-    hours_sleep = models.IntegerField()
-    smoking = models.IntegerField()  # how many times a day
-    alcohol = models.IntegerField()  # how many times a month
-    junkfood = models.CharField(max_length=200, choices=CATEGORY_JUNK)
-
-    user = models.ForeignKey(
-        Account, related_name='details', null=True, on_delete=models.SET_NULL)
-=======
-    CATEGORY_REASON = (
-        ('Peer','Peer'),
-        ('Social','Social'),
-        ('Self','Self'),
-        ('Family','Family'),
-        ('Group','Group'),
-    )
-
-    CATEGORY_MED = (
-        ('Yes','Yes'),
-        ('No','No'),
-    )
-
-    CATEGORY_JUNK = (
-        ('Daily','Daily'),
-        ('Every alternate day','Every alternate day'),
-        ('twice a week','twice a week'),
-        ('once a week','once a week'),
-        ('once a month','once a month'),
-    )
     age             = models.IntegerField()
     height          = models.IntegerField()
     current_weight  = models.IntegerField()
@@ -223,13 +183,4 @@ class UserDetails(models.Model):
     alcohol         = models.IntegerField() #how many times a month
     junkfood        = models.CharField(max_length=200,choices=CATEGORY_JUNK)
 
-
     user = models.ForeignKey(Account,related_name='details', null=True, on_delete = models.SET_NULL)
-
-
-class User_graph_workout(models.Model):
-    workout_time = models.IntegerField()
-    workout_date = models.DateField()
-
-    
->>>>>>> Stashed changes

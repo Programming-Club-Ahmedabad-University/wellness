@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import DailyUpdates, WeeklyUpdates
+
+
+admin.site.register(DailyUpdates)
+admin.site.register(WeeklyUpdates)

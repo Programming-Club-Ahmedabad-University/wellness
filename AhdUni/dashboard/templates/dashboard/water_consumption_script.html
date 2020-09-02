@@ -1,0 +1,33 @@
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+        var ctx = document.getElementById('water-consumption-chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Object.keys({{water_consumption|safe}}),
+                datasets: [{
+                    data: Object.values({{water_consumption|safe}}),
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                plugins: {
+                    colorschemes: {
+                        scheme: 'tableau.HueCircle19'
+                    }
+                },
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+            }
+        });
+    });
+    </script>

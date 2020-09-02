@@ -4,22 +4,6 @@ from .models import (Account, UserDetails, GENDER_CHOICES, CATEGORY_JUNK,
                      CATEGORY_MED, CATEGORY_REASON, CATEGORY_SG,
                      CATEGORY_WI, CATEGORY_WP)
 
-# age = models.IntegerField()
-#     height = models.IntegerField()
-#     current_weight = models.IntegerField()
-#     goal = models.CharField(max_length=200, choices=CATEGORY_SG)
-#     workout_pattern = MultiSelectField(choices=CATEGORY_WP)
-#     water_consumption = models.CharField(max_length=200, choices=CATEGORY_WI)
-#     # current_diet
-#     motivation = MultiSelectField(max_length=200, choices=CATEGORY_REASON)
-#     ongoing_med = models.CharField(max_length=200, choices=CATEGORY_MED)
-#     ongoing_med_reason = models.CharField(max_length=200, null=True)
-#     menstural_cycle = models.CharField(max_length=200, null=True)
-#     hours_sleep = models.IntegerField()
-#     smoking = models.IntegerField()  # how many times a day
-#     alcohol = models.IntegerField()  # how many times a month
-#     junkfood
-
 
 class UserDetailsForm(forms.Form):
     age = forms.IntegerField(label='Age', widget=forms.NumberInput(

@@ -1,0 +1,27 @@
+<div class="modal fade" id="daily-update" tabindex="-1" role="dialog"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Daily Update</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form action="{% url 'dashboard' %}" method="POST">
+				{% csrf_token %}
+				<input type="hidden" name="type" value="daily">
+				<div class="modal-body">
+					<label for="workout">Workout</label>
+					<input type="number" class="form-control mb-3" name="workout" placeholder="Workout in mins" required>
+					<label for="workout">Water Consumption</label>
+					<input type="number" class="form-control" name="water_consumption" placeholder="Water comsumption in litres" required>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-dark">Update</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

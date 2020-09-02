@@ -1,5 +1,4 @@
 from django.urls import path
-from . import views 
 from .views import *
 
 urlpatterns = [
@@ -10,12 +9,5 @@ urlpatterns = [
     path('set_password', PasswordSetterView.as_view(), name='set_password'),
     path('set_password/<enrollment_number64>/<token>', PasswordSetterView.as_view(), name='set_password'),
     path('logout', logout_view, name='logout'),
-<<<<<<< Updated upstream
     path('edit_profile/', ProfileView.as_view() ,name='edit_profile'),
-
 ] 
-=======
-    path('edit_profile/', views.edit_profile ,name='edit_profile'),
-    path('graph/',views.graph,name='graph')
-]
->>>>>>> Stashed changes

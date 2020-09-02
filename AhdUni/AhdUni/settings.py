@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'multiselectfield',
 
     # our_apps
+	'dashboard',
 	'screening',
     'account',
     'home',

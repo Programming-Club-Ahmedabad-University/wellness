@@ -15,8 +15,8 @@ from django.utils.html import strip_tags
 from django.contrib import messages
 from django.db.models import Q
 
-from .forms import LoginForm, RegisterForm, User_DetailsForm
-from .models import Account, AccountManager, User_Details
+from .forms import LoginForm, RegisterForm, UserDetailsForm
+from .models import Account, AccountManager, UserDetails
 from .utils import (generate_token, is_valid_contact,
                     is_valid_enrollment)
 # Create your views here.
@@ -39,7 +39,7 @@ def send_activation_email(request, user, email):
                'token': generate_token.make_token(user)}
     message = render_to_string('account/activate_link.html', context)
     plain_message = strip_tags(message)
-    #print(EMAIL_HOST_USER)
+    # print(EMAIL_HOST_USER)
     send_mail(subject, plain_message, EMAIL_HOST_USER,
               [email], html_message=message)
 
@@ -76,7 +76,7 @@ class RegisterView(View):
         if user:
             messages.error(request, 'Account already exists!!')
             return redirect('register')
-       
+
         if not is_valid_enrollment(enrollment_number):
             messages.error(request, 'Enter a valid enrollment number!!')
             return redirect('register')
@@ -94,10 +94,10 @@ class RegisterView(View):
         # Email verification is done by encoding user's primary key and generating a token
         send_activation_email(request, user, email)
 
-        messages.info(request,'Verification link sent. Check your email! \
+        messages.info(request, 'Verification link sent. Check your email! \
             Please wait for 5-7 minutes and check \
             for SPAM/Promotions Folder in Gmail!'
-            )
+                      )
         return redirect('login')
 
 
@@ -189,18 +189,18 @@ class ForgotPasswordView(View):
 
             context = {'user': user, 'domain': current_site.domain,
                        'encoded_enrollment': urlsafe_base64_encode(
-                            force_bytes(user.enrollment_number)
-                           ),
+                           force_bytes(user.enrollment_number)
+                       ),
                        'token': generate_token.make_token(user)}
             message = render_to_string('account/reset_link.html', context)
             plain_message = strip_tags(message)
 
             send_mail(subject, plain_message, EMAIL_HOST_USER,
                       [user.email], html_message=message)
-            messages.info(request,'Reset link sent. Check your email! \
+            messages.info(request, 'Reset link sent. Check your email! \
                 Please wait for 5-7 minutes and check \
                 for SPAM/Promotions Folder in Gmail!'
-                )
+                          )
             return redirect('login')
 
 
@@ -241,81 +241,60 @@ class PasswordSetterView(View):
         return redirect('login')
 
 
-# class ProfileView(LoginRequiredMixin, View):
-#     """
-#         View for profile page
-#         Details of the users are displayed.
-#         User can update password and CF id.
-#     """
-#     login_url = '/login/'
-#     redirect_field_name = 'profile'
-
-#     def get(self, request, *args, **kwargs):
-#         context = {}
-#         return render(request, 'account/profile/profile.html', context)
-
-#     def post(self, request, *agrs, **kwargs):
-#         field = request.POST.get('field')
-
-#         if field == 'password':
-#             old_password = request.POST.get('old')
-#             try:
-#                 user = authenticate(
-#                     request, enrollment_number=request.user.enrollment_number, password=old_password)
-#             except Exception as identifier:
-#                 user = None
-
-#             if user is None:
-#                 messages.error(request, 'Password couldn\'t be verified')
-#             else:
-#                 password1 = request.POST.get('password1')
-#                 password2 = request.POST.get('password2')
-
-#                 if password1 == password2:
-#                     request.user.set_password(password2)
-#                     request.user.save()
-#                     messages.info(request, 'Password changed successfully')
-#                 else:
-#                     messages.error(request, 'New Password didn\'t match')
-
-#             return redirect('profile')
-
-#         else:
-#             password = request.POST.get('password')
-#             try:
-#                 user = authenticate(
-#                     request, enrollment_number=request.user.enrollment_number, password=password)
-#             except Exception as identifier:
-#                 user = None
-
-#             if user is None:
-#                 messages.error(request, 'Password couldn\'t be verified')
-#             else:
-#                 request.user.cf_enrollment_number = request.POST.get('cf_enrollment_number')
-#                 request.user.save()
-#                 messages.info(request, 'enrollment_number updated successfully')
-
-#             return redirect('profile')
-
-
 @login_required
 def logout_view(request, *args, **kwargs):
     logout(request)
     messages.info(request, 'Logged out successfully')
     return redirect('login')
 
-def edit_profile(request):
-   # current_user = request.user
-    #details = User_Details.objects.get(id=current_user.id)
-    form = User_DetailsForm()
-    if request.method =='POST':
-        form = User_DetailsForm(request.POST)
-        
-        if form.is_valid():
-            form.save()
-            return redirect('/')
 
-   
-    context = {'form': form}
+class ProfileView(View):
     
-    return render(request, 'account/edit_profile.html',context)
+    def get(self, request, *args, **kwargs):
+        current_user = request.user
+        form = UserDetailsForm()
+        current_details = dict()
+        user_details = UserDetails.objects.filter(user=request.user).values()
+
+        if len(user_details) != 0:
+            for data in user_details:
+                current_details = data
+
+            current_details.pop('id')
+            current_details.pop('user_id')
+            form = UserDetailsForm(data=current_details)
+
+        context = {'form': form, 'current_details': user_details}
+        return render(request, 'account/edit_profile.html', context)
+
+    def post(self, request, *args, **kwargs):
+        details = None
+
+        try:
+            details = UserDetails.objects.get(user=request.user)
+        except Exception as identifier:
+            pass
+        
+        if details is not None:
+            details.delete()
+        
+        new_detail = UserDetails(   
+            age = request.POST.get('age'),
+            height = request.POST.get('height'),
+            weight = request.POST.get('weight'),
+            goal = request.POST.get('goal'),
+            workout_pattern = request.POST.get('workout_pattern'),
+            water_consumption = request.POST.get('water_consumption'),
+            motivation = request.POST.get('motivation'),
+            ongoing_med = request.POST.get('ongoing_med'),
+            ongoing_med_reason = request.POST.get('ongoing_med_reason'),
+            menstural_cycle = request.POST.get('menstural_cycle'),
+            hours_sleep = request.POST.get('hours_sleep'),
+            smoking = request.POST.get('smoking'),
+            alcohol = request.POST.get('alcohol'),
+            junkfood = request.POST.get('junkfood'),
+            user = request.user
+        )
+        new_detail.save()
+        messages.info(request, 'Profile updated successfully')
+        return redirect('home')

@@ -14,18 +14,24 @@
                 <a class="nav-link nav-link-class" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link nav-link-class" href="{% url 'edit_profile'  %}">Edit Profile</a>
-            </li><li class="nav-item">
-                <a class="nav-link nav-link-class" href="{% url 'home' %}">FAQ's</a>
-            </li><li class="nav-item">
+                <a class="nav-link nav-link-class" href="#">Dashboard</a>
+            </li>
+			<li class="nav-item">
                 <a class="nav-link nav-link-class" href="{% url 'questions' %}">Screening Test</a>
-            </li><li class="nav-item">
+            </li>
+			<li class="nav-item">
                 <a class="nav-link nav-link-class" href="{% url 'forum' %}">Forum</a>
             </li>
             {% if request.user.is_authenticated %}
-            <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="{% url 'logout' %}">Logout</a>
-            </li>
+			<li class="nav-item dropdown">
+				<a class="nav-link nav-link-class dropdown-toggle" href="#"role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Hi, {{ request.user.full_name }}
+				</a>
+				<div class="dropdown-menu dropdown-div">
+					<a class="dropdown-item nav-link-class mx-0 px-0" href="{% url 'edit_profile' %}">Profile</a>
+					<a class="dropdown-item nav-link-class mx-0 px-0" href="{% url 'logout' %}">Logout</a>
+				</div>
+			</li>
             {% else %}
             <li class="nav-item ">
                 <a class="nav-link nav-link-class" href="{% url 'login' %}">Login</a>
@@ -34,6 +40,9 @@
                 <a class="nav-link nav-link-class" href="{% url 'register' %}">Register</a>
             </li>
             {% endif %}
+			<li class="nav-item">
+                <a class="nav-link nav-link-class" href="{% url 'home' %}">FAQ's</a>
+            </li>
         </ul>
     </div>
 </nav>

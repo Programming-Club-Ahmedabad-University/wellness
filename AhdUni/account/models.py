@@ -5,9 +5,57 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from multiselectfield import MultiSelectField
 
 from AhdUni.settings import SCREENING_TEST_GAP
-# Create your models here.
 
-DEFAULT_TIME = datetime(2020, 6, 13, 16, 0, 0)
+GENDER_CHOICES = (
+    ("1", "male"),
+    ("2", "female"),
+    ("3", "rather not say"),
+)
+
+CATEGORY_SG = (
+    ('<5', '<5'),
+    ('5-10', '5-10'),
+    ('10-15', '10-15'),
+    ('15-25', '15-25')
+)
+
+CATEGORY_WP = (
+    ('Exercise at home', 'Exercise at home'),
+    ('Gyming', 'Gyming'),
+    ('Cycling', 'Cycling'),
+    ('Walk', 'Walk'),
+    ('Yoga', 'Yoga'),
+    ('Zumba', 'Zumba')
+)
+
+CATEGORY_WI = (
+    ('2', '2'),
+    ('4', '4'),
+    ('6', '6'),
+    ('8', '8'),
+    ('10', '10'),
+)
+
+CATEGORY_REASON = (
+    ('Peer', 'Peer'),
+    ('Social', 'Social'),
+    ('Self', 'Self'),
+    ('Family', 'Family'),
+    ('Group', 'Group'),
+)
+
+CATEGORY_MED = (
+    ('Yes', 'Yes'),
+    ('No', 'No'),
+)
+
+CATEGORY_JUNK = (
+    ('Daily', 'Daily'),
+    ('Every alternate day', 'Every alternate day'),
+    ('twice a week', 'twice a week'),
+    ('once a week', 'once a week'),
+    ('once a month', 'once a month'),
+)
 
 
 class AccountManager(BaseUserManager):
@@ -56,23 +104,15 @@ class AccountManager(BaseUserManager):
         return user
 
 
-gender_choices = (
-    ("1", "male"),
-    ("2", "female"),
-    ("3", "rather not say"),
-)
-
 
 class Account(AbstractBaseUser):
     # custom_fields
-    # enrollment_number = models.CharField(max_length=20, unique=True)
-    # contact_number = models.IntegerField(unique=True, null=True, blank=True)
     full_name = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(unique=True)
     enrollment_number = models.CharField(max_length=20)
     contact_number = models.IntegerField(null=True, blank=True)
     programme = models.CharField(max_length=30, null=True, blank=True)
-    gender = models.CharField(max_length=20, choices=gender_choices,
+    gender = models.CharField(max_length=20, choices=GENDER_CHOICES,
                               null=True, blank=True)
     last_weekly_update = models.DateTimeField(null=True, blank=True)
     last_daily_update = models.DateTimeField(null=True, blank=True)
@@ -124,59 +164,16 @@ class Account(AbstractBaseUser):
                     else False)
 
 
-class User_Details(models.Model):
-    CATEGORY_SG = (
-        ('<5', '<5'),
-        ('5-10', '5-10'),
-        ('10-15', '10-15'),
-        ('15-25', '15-25')
-    )
-    CATEGORY_WP = (
-        ('Exercise at home', 'Exercise at home'),
-        ('Gyming', 'Gyming'),
-        ('Cycling', 'Cycling'),
-        ('Walk', 'Walk'),
-        ('Yoga', 'Yoga'),
-        ('Zumba', 'Zumba')
-    )
-
-    CATEGORY_WI = (
-        ('2', '2'),
-        ('4', '4'),
-        ('6', '6'),
-        ('8', '8'),
-        ('10', '10'),
-    )
-
-    CATEGORY_REASON = (
-        ('Peer', 'Peer'),
-        ('Social', 'Social'),
-        ('Self', 'Self'),
-        ('Family', 'Family'),
-        ('Group', 'Group'),
-    )
-
-    CATEGORY_MED = (
-        ('Yes', 'Yes'),
-        ('No', 'No'),
-    )
-
-    CATEGORY_JUNK = (
-        ('Daily', 'Daily'),
-        ('Every alternate day', 'Every alternate day'),
-        ('twice a week', 'twice a week'),
-        ('once a week', 'once a week'),
-        ('once a month', 'once a month'),
-    )
+class UserDetails(models.Model):
+    
     age = models.IntegerField()
     height = models.IntegerField()
-    current_weight = models.IntegerField()
-    set_goal = models.CharField(max_length=200, choices=CATEGORY_SG)
-    workout_patterns = MultiSelectField(choices=CATEGORY_WP)
-    daily_water = models.CharField(max_length=200, choices=CATEGORY_WI)
-    reason = models.CharField(max_length=200, choices=CATEGORY_REASON)
+    weight = models.IntegerField()
+    goal = models.CharField(max_length=200, choices=CATEGORY_SG)
+    workout_pattern = MultiSelectField(choices=CATEGORY_WP)
+    water_consumption = models.CharField(max_length=200, choices=CATEGORY_WI)
     # current_diet
-    reason = MultiSelectField(max_length=200, choices=CATEGORY_REASON)
+    motivation = MultiSelectField(max_length=200, choices=CATEGORY_REASON)
     ongoing_med = models.CharField(max_length=200, choices=CATEGORY_MED)
     ongoing_med_reason = models.CharField(max_length=200, null=True)
     menstural_cycle = models.CharField(max_length=200, null=True)

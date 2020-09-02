@@ -3,19 +3,29 @@
 
 {% block head %}
     <title>Register</title>
-    <link rel="stylesheet" href="{% static 'account/css/auth.css'%}">
-    <script src="{% static 'account/js/edit_profile.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'account/css/profile.css'%}">
 {% endblock %}
 
 {% block content %}
 
-<h1 class="mx-auto heading mt-5 shadow">Edit Profile</h1>
+<h1 class="mx-auto heading mt-5 shadow">Profile</h1>
 <div class="container my-5 py-5 shadow edit-profile-box">
 
-    <form action = '' method = 'POST'>
+    <form action = '' method = 'POST' class="form">
+		<div class="row">
         {% csrf_token %}
-        {{form}}
-        <input type = "submit" name ='Update'>
+        {% for field in form %}
+			{% if field.label == "Ongoing Medicines Reason"%}
+				<div class="col-md-12">
+			{% else %}
+			<div class="col-md-6">
+			{% endif %}
+				{{ field.label }}:
+				{{ field }}
+			</div>
+		{% endfor %}
+        <button type="submit" class="btn mx-auto mt-4 profile-button">Update</button>
+		</div>
     </form>
 </div>
     

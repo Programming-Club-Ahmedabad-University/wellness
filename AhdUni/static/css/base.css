@@ -17,20 +17,20 @@ body {
 }
 
 .custom-toggler.navbar-toggler {
-    border: 2px solid #233862;
+    border: 2px solid #1573FF;
 }
 
 .custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(145, 228, 98)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(21, 115, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .nav-logo-class h2{
-    color: #233862;
+    color: #1573FF;
     font-weight: 900;
 }
 
 .nav-link-class {
-    color: #233862;
+    color: #1573FF;
     font-size: large;
     text-align: center;
     margin: 0 2vw 0 2vw;
@@ -38,23 +38,29 @@ body {
 
 .nav-link-class:hover,
 .nav-link-class a:hover {
-    background-color: #233862;
+    background-color: #1573FF;
     color: white;
     transition-duration: 1s;
     border-radius: 20px;
+}
+
+.dropdown-div {
+	position: absolute;
+	/* transform: translateX(-50%); */
+	/* right: 0; */
 }
 
 /* ---------------- Footer ----------------- */
 
 .footer {
     background-color: white;
-    color: #17282f;
+    color: #1573FF;
     text-align: center;
 }
 
 .footer a {
     background-color: transparent;
-    color: #17282f;
+    color: #1573FF;
 }
 
 /* ---------------- Utility ----------------- */

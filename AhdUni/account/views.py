@@ -15,8 +15,13 @@ from django.utils.html import strip_tags
 from django.contrib import messages
 from django.db.models import Q
 
+<<<<<<< Updated upstream
 from .forms import LoginForm, RegisterForm, UserDetailsForm
 from .models import Account, AccountManager, UserDetails
+=======
+from .forms import LoginForm, RegisterForm, User_DetailsForm
+from .models import * 
+>>>>>>> Stashed changes
 from .utils import (generate_token, is_valid_contact,
                     is_valid_enrollment)
 # Create your views here.
@@ -250,6 +255,7 @@ def logout_view(request, *args, **kwargs):
 
 class ProfileView(View):
     
+<<<<<<< Updated upstream
     def get(self, request, *args, **kwargs):
         current_user = request.user
         form = UserDetailsForm()
@@ -298,3 +304,27 @@ class ProfileView(View):
         new_detail.save()
         messages.info(request, 'Profile updated successfully')
         return redirect('home')
+=======
+    return render(request, 'account/edit_profile.html',context)
+
+#@login_required
+def graph(request):
+    data = User_graph_workout.objects.values_list("workout_date", "workout_time")
+    print(data)
+    
+    di = {} 
+    
+    di = dict(data) 
+    
+
+    print ("The Dictionary Is ::>", di) 
+
+
+    # content = {
+    # "workout": data[0]
+    # }
+    
+    return render(request,'account/graph.html',{
+        'workout': di,
+    })
+>>>>>>> Stashed changes

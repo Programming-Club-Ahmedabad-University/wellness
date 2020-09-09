@@ -1,16 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('input').forEach( (input) => {
-        if(input.type == 'checkbox') {
-            input.className = "form-check-input edit-profile-fields";
-        }
-        else if(input.type == 'submit') {
-            input.className = 'my-5 auth-button'
-        }
-        else {
-            input.className = "mb-3 form-control edit-profile-fields";
-        }
-    });
-    document.querySelectorAll('select').forEach( (select) => {
-        select.className = "mb-3 form-control edit-profile-fields";
-    });
+	const ongoing_med = document.querySelector('#id_ongoing_med');
+	const options = document.querySelectorAll('#id_ongoing_med option');
+	const reason_field = document.querySelector('.col-md-12');
+
+	const changeReasonField = () => {
+		const field = document.querySelector('.col-md-12');
+		if (ongoing_med.value == "Yes") {
+			if (field == null) {
+				ongoing_med.parentNode.parentNode.appendChild(reason_field);
+			}
+		}
+		else {
+			if (field != null) {
+				ongoing_med.parentNode.parentNode.removeChild(reason_field);
+			}
+		}
+	}
+
+	changeReasonField();
+
+	options.forEach(option => {
+		option.onclick = changeReasonField;
+	});
 });

@@ -18,35 +18,27 @@ from django.db.models import Q
 from .forms import LoginForm, RegisterForm, UserDetailsForm
 from .models import Account, AccountManager, UserDetails
 from .utils import (generate_token, is_valid_contact,
-                    is_valid_enrollment)
-# Create your views here.
+                    is_valid_enrollment, is_valid_email)
 
 
-EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_PORT = config('EMAIL_PORT')
+
 
 # Generating token and sending mail for activating account
-
-
 def send_activation_email(request, user, email):
     current_site = get_current_site(request)
-    subject = 'CEL-Activate your account'
+    subject = 'WELLNESS-Activate your account'
     context = {'user': user, 'domain': current_site.domain,
                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                'token': generate_token.make_token(user)}
     message = render_to_string('account/activate_link.html', context)
     plain_message = strip_tags(message)
-    # print(EMAIL_HOST_USER)
     send_mail(subject, plain_message, EMAIL_HOST_USER,
               [email], html_message=message)
 
 
 class RegisterView(View):
     """
-        Register View
         Renders registration page, verifies new user.
         On verification sends activation link.
     """
@@ -83,6 +75,10 @@ class RegisterView(View):
         if not is_valid_contact(contact_number):
             messages.error(request, 'Enter a valid contact number!!')
             return redirect('register')
+        if not is_valid_email(email):
+            messages.error(
+                request, 'Enter a valid Ahmedabad University email!!')
+            return redirect('register')
 
         user = Account(full_name=full_name, email=email,
                        enrollment_number=enrollment_number,
@@ -103,7 +99,6 @@ class RegisterView(View):
 
 class LoginView(View):
     """
-        Login View
         Renders login page and authenticates user.
     """
 
@@ -132,40 +127,34 @@ class LoginView(View):
                 return redirect('login')
             login(request, user)
             messages.info(request, 'Logged in successfully.')
-            return redirect('home')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid Email or Password.')
             return redirect('login')
 
 
-class ActivateAccountView(View):
-    """
-        Email Activation.
-        Verification by decoding primary key and checking token
-    """
+# Verification by decoding primary key and checking token
+def email_activation_view(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = Account.objects.get(pk=uid)
+    except Exception as identifier:
+        user = None
 
-    def get(self, request, uidb64, token):
-        try:
-            uid = force_text(urlsafe_base64_decode(uidb64))
-            user = Account.objects.get(pk=uid)
-        except Exception as identifier:
-            user = None
-
-        if user is None:
-            messages.error(request, 'Verification failed!!')
+    if user is None:
+        messages.error(request, 'Verification failed!!')
+    else:
+        if generate_token.check_token(user, token):
+            user.is_activated = True
+            user.save()
+            messages.info(request, 'Link verified successfully!!')
         else:
-            if generate_token.check_token(user, token):
-                user.is_activated = True
-                user.save()
-                messages.info(request, 'Link verified successfully!!')
-            else:
-                messages.error(request, 'Verification failed!!')
-        return redirect('login')
+            messages.error(request, 'Verification failed!!')
+    return redirect('login')
 
 
 class ForgotPasswordView(View):
     """
-        Forgot password view
         Getting email of the user and sending reset link.
     """
 
@@ -206,7 +195,7 @@ class ForgotPasswordView(View):
 
 class PasswordSetterView(View):
     """
-        Resetting new password
+        Verifying the reset link. 
         Getting new password and updating it.
     """
 
@@ -249,7 +238,9 @@ def logout_view(request, *args, **kwargs):
 
 
 class ProfileView(View):
-    
+    """
+        For rendering current profile and updating the profile
+    """
     def get(self, request, *args, **kwargs):
         current_user = request.user
         form = UserDetailsForm()
@@ -269,32 +260,45 @@ class ProfileView(View):
 
     def post(self, request, *args, **kwargs):
         details = None
+        menstrual_cycle = None
+        ongoing_med_reason = None
+
+        try:
+            menstrual_cycle = request.POST.get('menstural_cycle')
+        except Exception as identifier:
+            pass
+
+        try:
+            ongoing_med_reason = request.POST.get('ongoing_med_reason')
+        except Exception as identifier:
+            pass
 
         try:
             details = UserDetails.objects.get(user=request.user)
         except Exception as identifier:
             pass
-        
+
         if details is not None:
             details.delete()
-        
-        new_detail = UserDetails(   
-            age = request.POST.get('age'),
-            height = request.POST.get('height'),
-            weight = request.POST.get('weight'),
-            goal = request.POST.get('goal'),
-            workout_pattern = request.POST.get('workout_pattern'),
-            water_consumption = request.POST.get('water_consumption'),
-            motivation = request.POST.get('motivation'),
-            ongoing_med = request.POST.get('ongoing_med'),
-            ongoing_med_reason = request.POST.get('ongoing_med_reason'),
-            menstural_cycle = request.POST.get('menstural_cycle'),
-            hours_sleep = request.POST.get('hours_sleep'),
-            smoking = request.POST.get('smoking'),
-            alcohol = request.POST.get('alcohol'),
-            junkfood = request.POST.get('junkfood'),
-            user = request.user
+
+        new_detail = UserDetails(
+            age=request.POST.get('age'),
+            height=request.POST.get('height'),
+            current_weight=request.POST.get('current_weight'),
+            set_goal=request.POST.get('set_goal'),
+            workout_patterns=request.POST.getlist('workout_patterns'),
+            daily_water=request.POST.get('daily_water'),
+            reason=request.POST.getlist('reason'),
+            ongoing_med=request.POST.get('ongoing_med'),
+            ongoing_med_reason=ongoing_med_reason,
+            menstural_cycle=menstrual_cycle,
+            hours_sleep=request.POST.get('hours_sleep'),
+            smoking=request.POST.get('smoking'),
+            alcohol=request.POST.get('alcohol'),
+            junkfood=request.POST.get('junkfood'),
+            user=request.user
         )
         new_detail.save()
+
         messages.info(request, 'Profile updated successfully')
         return redirect('home')

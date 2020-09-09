@@ -1,0 +1,18 @@
+.charts-container {
+  background-color: #fff740;
+}
+
+.dashboard-button {
+  height: 40px;
+  border-radius: 20px;
+  border: 2px solid #2f2f2f;
+  background-color: #2f2f2f;
+  color: white;
+  width: 200px;
+}
+
+.dashboard-button:hover {
+  background-color: transparent;
+  color: #2f2f2f;
+  transition-duration: 1s;
+}

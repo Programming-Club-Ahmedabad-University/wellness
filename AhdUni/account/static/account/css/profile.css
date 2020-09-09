@@ -1,32 +1,44 @@
+/* Remove arrow form integer field */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .heading {
-    text-align: center;
-    color: #2f2f2f;
-    background-color: #fff740;
-    border: 2px solid #2f2f2f;
-    max-width: 300px;
+  text-align: center;
+  color: #2f2f2f;
+  background-color: #fff740;
+  border: 2px solid #2f2f2f;
+  max-width: 300px;
 }
 
 .edit-profile-box {
-    background-color: #fff740;
-    border: 2px solid #2f2f2f;
-    border-radius: 20px;
+  background-color: #fff740;
+  border: 2px solid #2f2f2f;
+  border-radius: 20px;
 }
 
 .fields {
-	border: 2px solid #2f2f2f;
+  border: 2px solid #2f2f2f;
 }
 
 .profile-button {
-    height: 40px;
-    border-radius: 20px;
-    border: 2px solid #2f2f2f;
-    background-color: #2f2f2f;
-    color: white;
-    width: 90%;
+  height: 40px;
+  border-radius: 20px;
+  border: 2px solid #2f2f2f;
+  background-color: #2f2f2f;
+  color: white;
+  width: 90%;
 }
 
 .profile-button:hover {
-    background-color: transparent;
-    color: #2f2f2f;
-    transition-duration: 1s;
+  background-color: transparent;
+  color: #2f2f2f;
+  transition-duration: 1s;
 }

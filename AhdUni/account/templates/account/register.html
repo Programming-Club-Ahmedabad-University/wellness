@@ -25,7 +25,9 @@
 								<div class="col-xl-6 col-md-12 col-sm-6">
 									<label for="{{field.label}}"><b>{{field.label}}</b></label>
 									{% if field.label == "Password" %}
-										<i class="fas fa-eye eye-toggler mx-2"></i>
+                                    <span class="eye-toggler">
+                                        <i class="fas fa-eye mx-2"></i>
+                                    </span>
 									{% endif %}    
 									{{field}}
 								</div>

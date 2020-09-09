@@ -1,18 +1,18 @@
 .forum-button {
-	background-color: #fff740;
-	border: 2px solid black;
-	border-radius: 20px;
+  background-color: #fff740;
+  border: 2px solid black;
+  border-radius: 20px;
 }
 
 .forum-button:hover {
-	background-color: whitesmoke;
+  background-color: whitesmoke;
 }
 
 .card {
-	background-color: whitesmoke; 
-	border: none;
+  background-color: whitesmoke;
+  border: none;
 }
 
 .media-box {
-	width: 90%;
+  width: 90%;
 }

@@ -1,45 +1,66 @@
 /* 1573FF */
 
 body {
-    background-color: #fff740;
-	background-image: none;
+  background-color: #fff740;
+  background-image: none;
 }
 
 .home-heading {
-    text-align: left;
+  text-align: left;
 }
 
 .home-heading-1 {
-    color: #1573FF;
-    font-size: 72px;
-    line-height: 78px;
-    font-weight: 700;
-}
- 
-.home-subtitle{
-    font-size: 16px;
-    font-style: italic;
+  color: #1573ff;
+  font-size: 72px;
+  line-height: 78px;
+  font-weight: 700;
 }
 
-@media screen and ( max-width: 1000px) {
-    .home-heading h1 {
-        font-size: 36px;
-        font-weight: 600;
-    }
+.home-subtitle {
+  font-size: 16px;
+  font-style: italic;
 }
 
-@media screen and ( max-width: 767px) {
-    .home-heading h1 {
-        text-align: center;
-    }
+@media screen and (max-width: 1000px) {
+  .home-heading h1 {
+    font-size: 36px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .home-heading h1 {
+    text-align: center;
+  }
 }
 
 .home-wave {
-    width: 100vw;
-    position: relative;
-    bottom: -1;
+  width: 100vw;
+  position: relative;
+  bottom: -1;
 }
 
 .image-box {
-    width: 90%;
+  width: 90%;
 }
+
+.image-box img {
+  animation: translate 6s ease infinite;
+}
+
+@keyframes translate {
+    0% {
+      transform: translateX(0);
+    }
+  
+    25% {
+      transform: translateX(5vw);
+    }
+    75% {
+      transform: translateX(-5vw);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  

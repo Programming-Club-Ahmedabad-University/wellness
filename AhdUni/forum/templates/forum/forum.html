@@ -7,18 +7,21 @@
 {% endblock %}
 
 {% block content %}
-<div class="container py-5 main">
-    <div class="row mt-md-5 mx-auto">
-        {% for post in post_list %}
-            <div class="container card mb-4 shadow">
-                <div class="card-body">
-                    <h2 class="card-title text-warning">{{ post.title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.created_on}} </p>
-                    <p class="card-text">{{post.text|slice:":200" }}</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn forum-button">Read More &rarr;</a>
-                </div>
-        	</div>
-        {% endfor %}
-    </div>
-</div>
+    <section id="">
+        <div class="container py-5 main">
+            <div class="row mt-md-5 mx-auto">
+                {% for post in page_data %}
+                    <div class="container card mb-4 shadow">
+                        <div class="card-body">
+                            <h2 class="card-title text-warning">{{ post.title }}</h2>
+                            <p class="card-text text-muted h6">{{ post.created_on}} </p>
+                            <p class="card-text">{{post.text|slice:":200" }}</p>
+                            <a href="{% url 'post_detail' post.slug  %}" class="btn forum-button">Read More &rarr;</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% include 'pagination.html' %}
+    </section>
 {%endblock%}

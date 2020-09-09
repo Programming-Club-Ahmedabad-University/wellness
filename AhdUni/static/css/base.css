@@ -4,103 +4,121 @@
     3. Utility Classes 
 ----------------------------*/
 
-
 body {
-    font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
 }
 
 /* ---------------- Navbar ----------------- */
 
 .nav-class {
-    background-color: white;
-    padding: 0px 16px 0px 16px;
+  background-color: white;
+  padding: 0px 16px 0px 16px;
 }
 
 .custom-toggler.navbar-toggler {
-    border: 2px solid #1573FF;
+  border: 2px solid #1573ff;
 }
 
 .custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(21, 115, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(21, 115, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.nav-logo-class h2{
-    color: #1573FF;
-    font-weight: 900;
+.nav-logo-class h2 {
+  color: #1573ff;
+  font-weight: 900;
 }
 
 .nav-link-class {
-    color: #1573FF;
-    font-size: large;
-    text-align: center;
-    margin: 0 2vw 0 2vw;
+  color: #1573ff;
+  font-size: large;
+  text-align: center;
+  margin: 0 2vw 0 2vw;
 }
 
 .nav-link-class:hover,
 .nav-link-class a:hover {
-    background-color: #1573FF;
-    color: white;
-    transition-duration: 1s;
-    border-radius: 20px;
+  background-color: #1573ff;
+  color: white;
+  transition-duration: 1s;
+  border-radius: 20px;
 }
 
 .dropdown-div {
-	position: absolute;
-	/* transform: translateX(-50%); */
-	/* right: 0; */
+  position: absolute;
+  /* transform: translateX(-50%); */
+  /* right: 0; */
 }
 
 /* ---------------- Footer ----------------- */
 
 .footer {
-    background-color: white;
-    color: #1573FF;
-    text-align: center;
+  background-color: white;
+  color: #1573ff;
+  text-align: center;
 }
 
 .footer a {
-    background-color: transparent;
-    color: #1573FF;
+  background-color: transparent;
+  color: #1573ff;
+}
+
+/* ---------------- Footer ----------------- */
+
+.pagination-current {
+  height: 35px;
+  width: 35px;
+  background-color: #1573ff;
+  color: white;
+}
+
+.pagination li a {
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #1573ff;
 }
 
 /* ---------------- Utility ----------------- */
 
 .main {
-	min-height: 90vh;
+  min-height: 90vh;
 }
 
 .center-x {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .center-y {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .center-xy {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .center-mx {
-    margin-left: 50%;
-    transform: translateX(-50%);
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .center-my {
-    margin-top: 50%;
-    transform: translateY(-50%);
+  margin-top: 50%;
+  transform: translateY(-50%);
 }
 
 .center-mxy {
-    margin-left: 50%;
-    margin-top: 50%;
-    transform: translateX(-50%);
-    transform: translateY(-50%);
+  margin-left: 50%;
+  margin-top: 50%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
 }

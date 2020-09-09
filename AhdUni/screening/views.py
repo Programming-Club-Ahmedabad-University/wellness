@@ -6,21 +6,31 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 
 from .models import Questions, Answers
-from AhdUni.settings import TOTAL_QUES
+from AhdUni.settings import TOTAL_QUES, SCREENING_TEST_GAP
 
 
-class QuestionsView(ListView):
-    paginate_by = 1
-    model = Questions
-    template_name = 'screening/questions.html'
+def screening_test_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        context ={'error_message': 'You must login before viewing this page.'}
+        return render(request, 'error.html', context)
+    elif not request.user.is_test_active():
+        context ={'error_message': f'You must wait for { SCREENING_TEST_GAP } day/s before attempting again.'}
+        return render(request, 'error.html', context)
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(QuestionsView, self).get_context_data(**kwargs)
-        context['range'] = range(TOTAL_QUES)
-        return context
+    questions = Questions.objects.all()
+
+    paginator = Paginator(questions, 1)
+    page = request.GET.get('page')
+    question = paginator.get_page(page)
+
+    context = {'object_list': question, 'range': paginator.page_range}
+    return render(request, 'screening/questions.html', context)
 
 
 def answers_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        context ={'error_message': 'You must login before viewing this page.'}
+        return render(request, 'error.html', context)
     answer_type = request.POST.get('answer_type')
     answer_no = int(request.POST.get('answer_no'))
     answer_user = request.user
@@ -74,6 +84,9 @@ def answers_view(request, *args, **kwargs):
 
 
 def submission_view(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        context ={'error_message': 'You must login before viewing this page.'}
+        return render(request, 'error.html', context)
     user = request.user
     answered_questions = len(user.answers.filter(
         answer_test=user.last_screening_number))

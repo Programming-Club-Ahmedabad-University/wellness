@@ -4,29 +4,40 @@
 {% block head %}
     <title>Register</title>
     <link rel="stylesheet" href="{% static 'account/css/profile.css'%}">
+	<script src="{% static 'account/js/edit_profile.js' %}"></script>
 {% endblock %}
 
 {% block content %}
+	<section id="profile-body">
 
-<h1 class="mx-auto heading mt-5 shadow">Profile</h1>
-<div class="container my-5 py-5 shadow edit-profile-box">
-
-    <form action = '' method = 'POST' class="form">
-		<div class="row">
-        {% csrf_token %}
-        {% for field in form %}
-			{% if field.label == "Ongoing Medicines Reason"%}
-				<div class="col-md-12">
-			{% else %}
-			<div class="col-md-6">
-			{% endif %}
-				{{ field.label }}:
-				{{ field }}
-			</div>
-		{% endfor %}
-        <button type="submit" class="btn mx-auto mt-4 profile-button">Update</button>
+		<h1 class="mx-auto heading mt-5 shadow">Profile</h1>
+		<div class="container my-5 py-5 shadow edit-profile-box">
+			<form action = '' method = 'POST' class="form">
+				<div class="row">
+					{% csrf_token %}
+					{% for field in form %}
+						{% if field.label == "Menstrual Cycle(No.of days)" %}
+							{% if request.user.gender == "1" or request.user.gender == "3" %}
+							{% else %}
+								<div class="col-md-6">
+									{{ field.label }}:
+									{{ field }}
+								</div>
+							{% endif %}
+						{% else %}						
+							{% if field.label == "Reason for ongoing medicines" %}
+								<div class="col-md-12">
+							{% else %}
+								<div class="col-md-6">
+							{% endif %}
+							{{ field.label }}:
+							{{ field }}
+							</div>
+						{% endif %}
+					{% endfor %}
+					<button type="submit" class="btn mx-auto mt-4 profile-button">Update</button>
+				</div>
+			</form>
 		</div>
-    </form>
-</div>
-    
+	</section>
 {% endblock %}

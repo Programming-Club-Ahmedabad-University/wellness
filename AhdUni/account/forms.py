@@ -89,7 +89,7 @@ class RegisterForm(forms.Form):
     ))
     enrollment_number = forms.CharField(label='Enrollment Number', widget=forms.TextInput(
         attrs={'class': 'form-control mb-3 fields', 'autocomplete': 'off',
-               'placeholder': 'Enrollment No.'}
+               'placeholder': 'Enrollment No. (eg 1841005)'}
     ))
     contact_number = forms.IntegerField(label='Contact Number', widget=forms.NumberInput(
         attrs={'class': 'form-control mb-3 fields',

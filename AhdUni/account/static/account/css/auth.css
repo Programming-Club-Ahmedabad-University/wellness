@@ -3,6 +3,18 @@ body {
   background-image: none;
 }
 
+/* Remove arrow form integer field */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .auth-box {
   color: #2f2f2f;
   border-radius: 10px;

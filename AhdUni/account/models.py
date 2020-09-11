@@ -102,7 +102,7 @@ class Account(AbstractBaseUser):
     # custom_fields
     full_name = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(unique=True)
-    enrollment_number = models.CharField(max_length=20)
+    enrollment_number = models.IntegerField(null=True, blank=True)
     contact_number = models.IntegerField(null=True, blank=True)
     programme = models.CharField(max_length=30, null=True, blank=True)
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES,
@@ -111,11 +111,12 @@ class Account(AbstractBaseUser):
     last_daily_update = models.DateTimeField(null=True, blank=True)
     last_screening_date = models.DateTimeField(null=True, blank=True)
     last_screening_number = models.IntegerField(default=1)
+    has_updated_profile = models.BooleanField(default=False)
+    is_activated = models.BooleanField(default=False)
     # required_fields
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    is_activated = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     objects = AccountManager()
@@ -158,7 +159,7 @@ class Account(AbstractBaseUser):
             current_time = datetime.now(tz=self.last_screening_date.tzinfo)
             return (True if current_time - self.last_screening_date >=
                     timedelta(days=SCREENING_TEST_GAP)
-                    else False)
+                    else False)    
 
 
 class UserDetails(models.Model):

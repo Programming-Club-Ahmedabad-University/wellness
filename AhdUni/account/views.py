@@ -127,7 +127,10 @@ class LoginView(View):
                 return redirect('login')
             login(request, user)
             messages.info(request, 'Logged in successfully.')
-            return redirect('dashboard')
+            if request.user.has_updated_profile:
+                return redirect('dashboard')
+            else:
+                return redirect('edit_profile')
         else:
             messages.error(request, 'Invalid Email or Password.')
             return redirect('login')
@@ -280,6 +283,9 @@ class ProfileView(View):
 
         if details is not None:
             details.delete()
+        else:
+            request.user.has_updated_profile = True
+            request.user.save()
 
         new_detail = UserDetails(
             age=request.POST.get('age'),

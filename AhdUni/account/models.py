@@ -159,7 +159,7 @@ class Account(AbstractBaseUser):
             current_time = datetime.now(tz=self.last_screening_date.tzinfo)
             return (True if current_time - self.last_screening_date >=
                     timedelta(days=SCREENING_TEST_GAP)
-                    else False)    
+                    else False)
 
 
 class UserDetails(models.Model):
@@ -173,9 +173,9 @@ class UserDetails(models.Model):
     # current_diet
     reason = MultiSelectField(max_length=200, choices=CATEGORY_REASON)
     ongoing_med = models.CharField(max_length=200, choices=CATEGORY_MED)
-    ongoing_med_reason = models.CharField(max_length=200, null=True, 
+    ongoing_med_reason = models.CharField(max_length=200, null=True,
                                           blank=True)
-    menstural_cycle = models.CharField(max_length=200, choices=CATEGORY_MC, 
+    menstural_cycle = models.CharField(max_length=200, choices=CATEGORY_MC,
                                        null=True, blank=True)
     hours_sleep = models.IntegerField()
     smoking = models.IntegerField()  # how many times a day

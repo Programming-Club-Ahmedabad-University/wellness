@@ -1,77 +1,61 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg nav-class sticky-top">
-  <a class="navbar-brand nav-logo-class" href="{% url 'home' %}">
-    <h2 class="ml-5">FitnessFolks</h2>
-  </a>
+	<a class="navbar-brand nav-logo-class" href="{% url 'home' %}">
+		<h2 class="ml-5">FitnessFolks</h2>
+	</a>
 
-  <button
-    class="custom-toggler navbar-toggler p-0"
-    type="button"
-    data-toggle="collapse"
-    data-target="#nav_list"
-    aria-controls="nav_list"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+	<button class="custom-toggler navbar-toggler p-0" type="button"
+		data-toggle="collapse" data-target="#nav_list" aria-controls="nav_list"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-  <div class="collapse navbar-collapse" id="nav_list">
-    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link nav-link-class" href="{% url 'home' %}">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link nav-link-class" href="{% url 'dashboard' %}"
-          >Dashboard</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link nav-link-class" href="{% url 'questions' %}"
-          >Screening Test</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link nav-link-class" href="{% url 'forum' %}">Forum</a>
-      </li>
-      {% if request.user.is_authenticated %}
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link nav-link-class dropdown-toggle"
-          href="#"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Hi, {{ request.user.full_name }}
-        </a>
-        <div class="dropdown-menu dropdown-div">
-          <a
-            class="dropdown-item nav-link-class mx-0 px-0"
-            href="{% url 'edit_profile' %}"
-            >Profile</a
-          >
-          <a
-            class="dropdown-item nav-link-class mx-0 px-0"
-            href="{% url 'logout' %}"
-            >Logout</a
-          >
-        </div>
-      </li>
-      {% else %}
-      <li class="nav-item">
-        <a class="nav-link nav-link-class" href="{% url 'login' %}">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link nav-link-class" href="{% url 'register' %}"
-          >Register</a
-        >
-      </li>
-      {% endif %}
-      <li class="nav-item">
-        <a class="nav-link nav-link-class" href="{% url 'FAQ' %}">FAQ's</a>
-      </li>
-    </ul>
-  </div>
+	<div class="collapse navbar-collapse" id="nav_list">
+		<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+			<li class="nav-item">
+				<a class="nav-link nav-link-class"
+					href="{% url 'home' %}">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link nav-link-class"
+					href="{% url 'forum' %}">Forum</a>
+			</li>
+			{% if request.user.is_authenticated %}
+			<li class="nav-item">
+				<a class="nav-link nav-link-class"
+					href="{% url 'dashboard' %}">Dashboard</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link nav-link-class"
+					href="{% url 'questions' %}">Screening Test</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link nav-link-class dropdown-toggle" href="#"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">
+					Hi, {{ request.user.full_name }}
+				</a>
+				<div class="dropdown-menu dropdown-div">
+					<a class="dropdown-item nav-link-class mx-0 px-0"
+						href="{% url 'edit_profile' %}">Profile</a>
+					<a class="dropdown-item nav-link-class mx-0 px-0"
+						href="{% url 'logout' %}">Logout</a>
+				</div>
+			</li>
+			{% else %}
+			<li class="nav-item">
+				<a class="nav-link nav-link-class"
+					href="{% url 'login' %}">Login</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link nav-link-class"
+					href="{% url 'register' %}">Register</a>
+			</li>
+			{% endif %}
+			<li class="nav-item">
+				<a class="nav-link nav-link-class"
+					href="{% url 'FAQ' %}">FAQ's</a>
+			</li>
+		</ul>
+	</div>
 </nav>

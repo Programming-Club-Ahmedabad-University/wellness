@@ -1,18 +1,27 @@
 .forum-button {
-  background-color: #fff740;
-  border: 2px solid black;
+  float: right;
+  background-color: #ec3a2d;
+  border: 2px solid #9b1616;
   border-radius: 20px;
+  color: #ffffff;
 }
-
+ 
 .forum-button:hover {
   background-color: whitesmoke;
 }
 
 .card {
-  background-color: whitesmoke;
+  background-color: rgba(245, 245, 245, 0.1);
   border: none;
 }
 
+.card-date {
+  color: #ec3a2d;
+}
+.sliced_text {
+  font-size: 15px;
+  font-style: italic;
+}
 .media-box {
   width: 90%;
 }

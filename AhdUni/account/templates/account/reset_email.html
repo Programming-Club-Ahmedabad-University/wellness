@@ -2,29 +2,35 @@
 {% load static %}
 
 {% block head %}
-    <title>PCW-Reset</title>
-    <link rel="stylesheet" href="{% static 'account/css/auth.css' %}">
+<title>PCW-Reset</title>
+<link rel="stylesheet" href="{% static 'account/css/auth.css' %}">
 {% endblock %}
 
 {% block content %}
-    <section id="auth-body">
-		<div class="container-fluid d-flex align-items-center main">
-			<div class="container mx-auto p-3 my-5 auth-box">
-				<div class="row">
-					<div class="col-md-6 d-flex justify-content-center align-items-center">
-						<img src="{% static 'images/forgot_password.svg' %}" class="auth-image">
-					</div>
-					<div class="col-md-6">
-						<div class="auth-box-heading">Reset Password </div>
-						<form action="{% url 'get_email' %}" method="POST">
-							{% csrf_token %}
-							<label for="email">Email id:</label>
-							<input type="email" name="email" class="fields form-control" placehoder="Email" required>
-							<button type="submit" class="btn mt-3 auth-button">Submit</button>
-						</form>
-					</div>
+<section id="auth-body">
+	<div class="container-fluid d-flex align-items-center main">
+		<div class="container mx-auto p-3 my-5 auth-box">
+			<div class="row">
+				<div
+					class="col-md-6 d-flex justify-content-center align-items-center">
+					<img src="{% static 'images/forgot_password.svg' %}"
+						class="auth-image">
+				</div>
+				<div class="col-md-6">
+					<div class="auth-box-heading">Reset Password </div>
+					<form action="{% url 'get_email' %}" method="POST">
+						{% csrf_token %}
+						<div
+							class="d-flex justify-content-center align-items-center px-3 mt-3 fields">
+							<input type="email" name="email" class=""
+								placeholder="Email" required>
+						</div>
+						<button type="submit"
+							class="btn mt-3 auth-button">Submit</button>
+					</form>
 				</div>
 			</div>
 		</div>
-    </section>
+	</div>
+</section>
 {% endblock %}

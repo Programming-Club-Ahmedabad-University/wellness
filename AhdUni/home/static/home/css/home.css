@@ -1,7 +1,7 @@
 /* 1573FF */
 
 body {
-  background-color: #fff740;
+  background-color: #84160f;
   background-image: none;
 }
 
@@ -10,20 +10,27 @@ body {
 }
 
 .home-heading-1 {
-  color: #1573ff;
-  font-size: 72px;
-  line-height: 78px;
+  color: #ffffff;
+  font-size: 66px;
+  line-height: 72px;
   font-weight: 700;
 }
 
 .home-subtitle {
   font-size: 16px;
   font-style: italic;
+  color: #ffffff50;
+}
+
+.underline {
+  border: 2px solid #ffffff;
+  width: 80%;
 }
 
 @media screen and (max-width: 1000px) {
   .home-heading h1 {
     font-size: 36px;
+    line-height: 40px;
     font-weight: 600;
   }
 }
@@ -41,26 +48,5 @@ body {
 }
 
 .image-box {
-  width: 90%;
+  width: 100%;
 }
-
-.image-box img {
-  animation: translate 6s ease infinite;
-}
-
-@keyframes translate {
-    0% {
-      transform: translateX(0);
-    }
-  
-    25% {
-      transform: translateX(5vw);
-    }
-    75% {
-      transform: translateX(-5vw);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  

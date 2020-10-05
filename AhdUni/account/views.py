@@ -244,6 +244,7 @@ class ProfileView(View):
     """
         For rendering current profile and updating the profile
     """
+
     def get(self, request, *args, **kwargs):
         current_user = request.user
         form = UserDetailsForm()

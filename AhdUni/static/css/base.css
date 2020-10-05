@@ -6,6 +6,7 @@
 
 body {
   font-family: "Varela Round", sans-serif;
+  background-color: #84160f;
 }
 
 /* ---------------- Navbar ----------------- */
@@ -16,7 +17,7 @@ body {
 }
 
 .custom-toggler.navbar-toggler {
-  border: 2px solid #1573ff;
+  border: 2px solid #84160f;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -24,12 +25,12 @@ body {
 }
 
 .nav-logo-class h2 {
-  color: #1573ff;
+  color: #84160f;
   font-weight: 900;
 }
 
 .nav-link-class {
-  color: #1573ff;
+  color: #84160f;
   font-size: large;
   text-align: center;
   margin: 0 2vw 0 2vw;
@@ -37,7 +38,7 @@ body {
 
 .nav-link-class:hover,
 .nav-link-class a:hover {
-  background-color: #1573ff;
+  background-color: #84160f;
   color: white;
   transition-duration: 1s;
   border-radius: 20px;
@@ -53,13 +54,13 @@ body {
 
 .footer {
   background-color: white;
-  color: #1573ff;
+  color: #84160f;
   text-align: center;
 }
 
 .footer a {
   background-color: transparent;
-  color: #1573ff;
+  color: #84160f;
 }
 
 /* ---------------- Footer ----------------- */
@@ -67,7 +68,7 @@ body {
 .pagination-current {
   height: 35px;
   width: 35px;
-  background-color: #1573ff;
+  background-color: #84160f;
   color: white;
 }
 
@@ -78,7 +79,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0;
-  color: #1573ff;
+  color: #84160f;
 }
 
 /* ---------------- Utility ----------------- */

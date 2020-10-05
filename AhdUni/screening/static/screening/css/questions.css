@@ -1,19 +1,19 @@
 .navigation-box {
-    background-color: whitesmoke;
+    background-color: #ffffff10;
     border-radius: 15px;
 }
 
 .navigation-circles {
     height: 40px;
     width: 40px;
-    color: black;
+    color: #ffffff;
     border-radius: 20px;
-    border: 2px solid black;
+    border: 2px solid #ffffff;
     cursor: pointer;
 }
 
 .box-heading {
-    color: #17282f;
+    color: #84160f;
     width: 100%;
     font-size: larger;
     font-weight: 700;
@@ -22,7 +22,7 @@
 }
 
 .question-box {
-    background-color: whitesmoke;
+    background-color: #ffffff10;
     border-radius: 15px;
 }
 
@@ -45,25 +45,25 @@
 .question-hr {
     height: 2px;
     border: none;
-    color: hsl(210, 52%, 30%);
-    background-color: hsl(210, 52%, 30%);
+    background-color: #ffffff20;
 }
 
-.textarea-fields {
-    margin: 6 0 16 0;
+.textarea-fields, .textarea-fields:focus {
     background-color: transparent;
     color: white;
     border: 2px solid white;
-    padding: 16px;
-    border-radius: 20px;
+    /* padding: 16px; */
+    /* border-radius: 20px; */
 }
 
 .submit-button {
-	background-color: #fff740;
-	border: 2px solid black;
+	background-color: #ec3a2d;
+    border: 2px solid #9b1616;
+    color: #ffffff;
 	border-radius: 20px;
 }
 
 .submit-button:hover {
-	background-color: whitesmoke;
+    background-color: whitesmoke;
+    color: #84160f;
 }

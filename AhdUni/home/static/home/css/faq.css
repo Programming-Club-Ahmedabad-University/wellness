@@ -1,19 +1,20 @@
-body {
-  background-image: none;
-  background-color: #fff740;
+* {
+  max-width: 100vw;
 }
 
 .heading {
   text-align: center;
-  color: #1573ff;
+  color: #ffffff;
+}
+
+.sub-heading {
+  color: #ffffff70;
+  hyphens: auto;
+  max-width: 100%;
 }
 
 .image-box {
   width: 70%;
-}
-
-.image-box img {
-  animation: translate 6s ease infinite;
 }
 
 .faq-box {
@@ -39,51 +40,44 @@ body {
 .accordion-button,
 .card-header {
   width: 100%;
-  background-color: #fff740;
+  background-color: #84160f;
   border: none;
   text-align: left;
 }
 
 .accordion-button:hover,
 .card-header:hover {
-  background-color: #f8ee31;
+  background-color: #65130e;
+  color: #ffffff;
 }
 
 .accordion-button {
   background-color: transparent;
+  color: #ffffff;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
 }
 
 .card {
   border-left: none;
   border-right: none;
-  border-top: 2px solid #aca519db;
+  border-top: 2px solid #ffffff10;
 }
 
+.card-body {
+  color: #84160f;
+}
 .accordion-button:after {
   content: '\002B';
   font-size: 20px;
   font-weight: bold;
-  color: #1573ff;
+  color: #ffffff;
   float: right;
   margin-left: 5px;
 }
 
 .active:after {
   content: "\2212"
-}
-
-@keyframes translate {
-  0% {
-    transform: translateX(0);
-  }
-
-  25% {
-    transform: translateX(20px);
-  }
-  75% {
-    transform: translateX(-20px);
-  }
-  100% {
-    transform: translateX(0);
-  }
 }

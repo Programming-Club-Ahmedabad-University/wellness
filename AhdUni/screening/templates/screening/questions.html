@@ -51,7 +51,7 @@
 								</div>
 								{% for question in object_list %}
 									<div class="center-mx question-text text-white my-3">
-											{{ question.question_text }}
+											{{ question.question_text|safe }}
 									</div>
 									<hr class="question-hr">
 									<div class="answer-box question-text text-dark mx-auto px-2">

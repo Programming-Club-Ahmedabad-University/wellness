@@ -8,7 +8,7 @@ SECRET_KEY = 'f!x^cur^ikee)5!f67%24+#m4kksh@3)a@q^#p54gib@e+ibea'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = '*'
 
 # Application defaults
 TOTAL_QUES = 5

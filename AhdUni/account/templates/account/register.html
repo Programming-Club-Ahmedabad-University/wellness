@@ -23,19 +23,19 @@
                     </div>
                     <div class="row">
                         {% for field in form %}
-                        <div
-                            class="d-flex justify-content-center align-items-center px-3 m-3 col-xl-5 col-md-12 col-sm-5 fields">
-                            {{field}}
-                            {% if field.label == "Password" %}
-                            <span class="eye-toggler">
-                                <i class="fas fa-eye text-white"></i>
-                            </span>
-                            {% endif %}
-                        </div>
+                            <div class="my-3 col-xl-6 col-md-12 col-sm-6">
+                                <div class="d-flex justify-content-center align-items-center fields px-3">
+                                    {{field}}
+                                    {% if field.label == "Password" %}
+                                    <span class="eye-toggler">
+                                        <i class="fas fa-eye text-white"></i>
+                                    </span>
+                                    {% endif %}
+                                </div>
+                            </div>
                         {% endfor %}
                     </div>
-                    <button type="submit"
-                        class="btn mt-4 auth-button">Register</button>
+                    <button type="submit" class="btn mt-4 auth-button">Register</button>
                 </form>
             </div>
         </div>

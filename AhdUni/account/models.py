@@ -164,7 +164,7 @@ class Account(AbstractBaseUser):
 
 class UserDetails(models.Model):
 
-    age = models.IntegerField()
+    birthdate = models.DateField()
     height = models.IntegerField()
     current_weight = models.IntegerField()
     set_goal = models.CharField(max_length=200, choices=CATEGORY_SG)
@@ -179,7 +179,6 @@ class UserDetails(models.Model):
                                        null=True, blank=True)
     hours_sleep = models.IntegerField()
     smoking = models.IntegerField()  # how many times a day
-    alcohol = models.IntegerField()  # how many times a month
     junkfood = models.CharField(max_length=200, choices=CATEGORY_JUNK)
 
     user = models.ForeignKey(

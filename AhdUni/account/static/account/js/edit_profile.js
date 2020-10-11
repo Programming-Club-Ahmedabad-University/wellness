@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const field = document.querySelector('.col-md-12');
 		if (ongoing_med.value == "Yes") {
 			if (field == null) {
-				ongoing_med.parentNode.parentNode.appendChild(reason_field);
+				ongoing_med.parentNode.parentNode.append(reason_field);
 			}
 		}
 		else {

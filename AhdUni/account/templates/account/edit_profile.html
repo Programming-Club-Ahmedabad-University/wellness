@@ -15,28 +15,28 @@
 			<div class="row">
 				{% csrf_token %}
 				{% for field in form %}
-				{% if field.label == "Menstrual Cycle(No.of days)" %}
-				{% if request.user.gender == "1" or request.user.gender == "3" %}
-				{% else %}
-				<div class="col-md-6 text-white">
-					&emsp13;{{ field.label }}:
-					{{ field }}
-				</div>
-				{% endif %}
-				{% else %}
-				{% if field.label == "Reason for ongoing medicines" %}
-				<div class="col-md-12 text-white">
-					{% else %}
-					<div class="col-md-6 text-white">
+					{% if field.label == "Menstrual Cycle(No.of days)*" %}
+						{% if request.user.gender == "1" or request.user.gender == "3" %}
+						{% else %}
+							<div class="col-md-6 text-white">
+								&emsp13;{{ field.label }}:
+								{{ field }}
+							</div>
 						{% endif %}
-						&emsp13;{{ field.label }}:
-						{{ field }}
-					</div>
-					{% endif %}
+					{% else %}
+						{% if field.label == "Reason for ongoing medicines" %}
+							<div class="col-md-12 text-white">
+						{% else %}
+							<div class="col-md-6 text-white">
+								{% endif %}
+								&emsp13;{{ field.label }}:
+								{{ field }}
+							</div>
+						{% endif %}
 					{% endfor %}
-					<button type="submit"
-						class="btn mx-auto mt-4 profile-button">Update</button>
 				</div>
+				<button type="submit"
+				class="btn mx-auto mt-4 profile-button">Update</button>
 		</form>
 	</div>
 </section>

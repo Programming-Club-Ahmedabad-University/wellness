@@ -289,7 +289,7 @@ class ProfileView(View):
             request.user.save()
 
         new_detail = UserDetails(
-            age=request.POST.get('age'),
+            birthdate=request.POST.get('birthdate'),
             height=request.POST.get('height'),
             current_weight=request.POST.get('current_weight'),
             set_goal=request.POST.get('set_goal'),
@@ -301,7 +301,6 @@ class ProfileView(View):
             menstural_cycle=menstrual_cycle,
             hours_sleep=request.POST.get('hours_sleep'),
             smoking=request.POST.get('smoking'),
-            alcohol=request.POST.get('alcohol'),
             junkfood=request.POST.get('junkfood'),
             user=request.user
         )

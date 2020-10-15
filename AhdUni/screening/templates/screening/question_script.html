@@ -1,0 +1,19 @@
+<script>
+    document.addEventListener('DOMContentLoaded', ()=> {
+        // Required contents
+        const answered_questions = Object.values({{ request.user.get_answered_questions|safe }});
+		console.log(answered_questions)
+
+        // For navigatoin panel
+        document.querySelectorAll('.navigation-circles').forEach( (circle) => {
+            if(answered_questions.includes(parseInt(circle.dataset.question_number))) {
+                circle.style.backgroundColor = '#ffffff';
+                circle.style.color = '#84160f';
+            } 
+            circle.onclick = ()=> {
+                var question_number = circle.dataset.question_number;
+                load_question(question_number)
+            };
+        });
+    });
+</script>

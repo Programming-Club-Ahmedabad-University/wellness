@@ -1,47 +1,52 @@
-/* Document colours:
-    Green : 91e460
-    Black : 17282f */
+/* 1573FF */
 
-#home-body {
-    background-color: white;
+body {
+  background-color: #84160f;
+  background-image: none;
 }
 
 .home-heading {
-    text-align: left;
+  text-align: left;
 }
 
 .home-heading-1 {
-    color: #233862;
-    font-size: 72px;
-    line-height: 78px;
-    font-weight: 700;
+  color: #ffffff;
+  font-size: 66px;
+  line-height: 72px;
+  font-weight: 700;
 }
 
-.home-subtitle{
-    font-size: 16px;
-    color: #EA6C2D;
-    font-style: italic;
+.home-subtitle {
+  font-size: 16px;
+  font-style: italic;
+  color: #ffffff50;
 }
 
-@media screen and ( max-width: 1000px) {
-    .home-heading h1 {
-        font-size: 36px;
-        font-weight: 600;
-    }
+.underline {
+  border: 2px solid #ffffff;
+  width: 80%;
 }
 
-@media screen and ( max-width: 767px) {
-    .home-heading h1 {
-        text-align: center;
-    }
+@media screen and (max-width: 1000px) {
+  .home-heading h1 {
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .home-heading h1 {
+    text-align: center;
+  }
 }
 
 .home-wave {
-    width: 100vw;
-    position: relative;
-    bottom: -1;
+  width: 100vw;
+  position: relative;
+  bottom: -1;
 }
 
-.banner-image {
-    width: 90%;
+.image-box {
+  width: 100%;
 }

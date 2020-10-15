@@ -4,93 +4,122 @@
     3. Utility Classes 
 ----------------------------*/
 
-
 body {
-    font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
+  background-color: #84160f;
 }
 
 /* ---------------- Navbar ----------------- */
 
 .nav-class {
-    background-color: white;
-    padding: 0px 16px 0px 16px;
+  background-color: white;
+  padding: 0px 16px 0px 16px;
 }
 
 .custom-toggler.navbar-toggler {
-    border: 2px solid #233862;
+  border: 2px solid #84160f;
 }
 
 .custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(145, 228, 98)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(21, 115, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.nav-logo-class h2{
-    color: #233862;
-    font-weight: 900;
+.nav-logo-class h2 {
+  color: #84160f;
+  font-weight: 900;
 }
 
 .nav-link-class {
-    color: #233862;
-    font-size: large;
-    text-align: center;
-    margin: 0 2vw 0 2vw;
+  color: #84160f;
+  font-size: large;
+  text-align: center;
+  margin: 0 2vw 0 2vw;
 }
 
 .nav-link-class:hover,
 .nav-link-class a:hover {
-    background-color: #233862;
-    color: white;
-    transition-duration: 1s;
-    border-radius: 20px;
+  background-color: #84160f;
+  color: white;
+  transition-duration: 1s;
+  border-radius: 20px;
+}
+
+.dropdown-div {
+  position: absolute;
+  /* transform: translateX(-50%); */
+  /* right: 0; */
 }
 
 /* ---------------- Footer ----------------- */
 
 .footer {
-    background-color: white;
-    color: #17282f;
-    text-align: center;
+  background-color: white;
+  color: #84160f;
+  text-align: center;
 }
 
 .footer a {
-    background-color: transparent;
-    color: #17282f;
+  background-color: transparent;
+  color: #84160f;
+}
+
+/* ---------------- Footer ----------------- */
+
+.pagination-current {
+  height: 35px;
+  width: 35px;
+  background-color: #84160f;
+  color: white;
+}
+
+.pagination li a {
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #84160f;
 }
 
 /* ---------------- Utility ----------------- */
 
+.main {
+  min-height: 90vh;
+}
+
 .center-x {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .center-y {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .center-xy {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .center-mx {
-    margin-left: 50%;
-    transform: translateX(-50%);
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .center-my {
-    margin-top: 50%;
-    transform: translateY(-50%);
+  margin-top: 50%;
+  transform: translateY(-50%);
 }
 
 .center-mxy {
-    margin-left: 50%;
-    margin-top: 50%;
-    transform: translateX(-50%);
-    transform: translateY(-50%);
+  margin-left: 50%;
+  margin-top: 50%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
 }

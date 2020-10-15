@@ -1,50 +1,27 @@
 {% extends "base.html" %} 
-{% block content %}
-<style>
-    body {
-        font-family: "Roboto", sans-serif;
-        font-size: 18px;
-        background-color: #fdfdfd;
-    }
-    
-    .head_text {
-        color: white;
-    }
-    
-    .card {
-        box-shadow: 0 16px 48px #E3E7EB;
-    }
-</style>
+{% load static %}
 
-<header class="masthead">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class=" col-md-8 col-md-10 mx-auto">
-                <div class="site-heading">
-                    <h3 class=" site-heading my-4 mt-3 text-white"> Welcome to my awesome Blog </h3>
-                    <p class="text-light">We Love Django As much as you do..! &nbsp
-                    </p>
-                </div>
+{% block head %}
+	<title>Forum</title>
+	<link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section id="">
+        <div class="container py-5 main">
+            <div class="row mt-md-5 mx-auto">
+                {% for post in page_data %}
+                    <div class="container card mb-4 shadow">
+                        <div class="card-body">
+                            <h2 class="card-title text-white">{{ post.title }}</h2>
+                            <p class="card-text h6 card-date">{{ post.created_on}} </p>
+                            <p class="card-text text-white sliced_text">{{post.text|slice:":200" }}</p>
+                            <a href="{% url 'post_detail' post.slug  %}" class="btn forum-button">Read More &rarr;</a>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-    </div>
-</header>
-<div class="container">
-    <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8 mt-3 left">
-            {% for post in post_list %}
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.created_on}} </p>
-                    <p class="card-text">{{post.text|slice:":200" }}</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+        {% include 'pagination.html' %}
+    </section>
 {%endblock%}

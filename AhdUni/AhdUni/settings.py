@@ -25,6 +25,8 @@ INSTALLED_APPS = [
 
     # third-party app / libraries
     'multiselectfield',
+    'ckeditor',
+    'ckeditor_uploader',
 
     # our_apps
 	'dashboard',
@@ -125,3 +127,18 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_PORT = config('EMAIL_PORT')
+
+#For CKEDITOR
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': 
+        {'toolbar': 'full',
+         'extraPlugins':','.join(
+             [
+                #  'codesnippet'
+                 'youtube'
+             ]
+         )
+        },
+}

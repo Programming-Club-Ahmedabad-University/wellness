@@ -13,6 +13,7 @@ urlpatterns = [
     path('', include('forum.urls')),
 	path('', include('screening.urls')),
 	path('', include('dashboard.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 if settings.DEBUG:

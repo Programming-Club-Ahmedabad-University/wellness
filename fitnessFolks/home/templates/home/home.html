@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Home Page</title>
+<link rel="stylesheet" href="{% static 'home/css/home.css'%}">
+{% endblock %}
+
+{% block content %}
+<section id="home-body">
+    <div class="container-fluid m-0 p-0 main">
+        <div class="row m-0 p-0">
+            <div class="col-lg-6 pt-5 order-1 order-lg-2 flex-center">
+                <div id="home-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active image-box">
+                            <img src="{% static 'images/banner_1.jpg' %}" class="d-block w-100 img" alt="...">
+                        </div>
+                        <div class="carousel-item image-box">
+                            <img src="{% static 'images/banner_2.jpg' %}" class="d-block w-100 img" alt="...">
+                        </div>
+                        <div class="carousel-item image-box">
+                            <img src="{% static 'images/banner_3.jpg' %}" class="d-block w-100 img" alt="...">
+                        </div>
+                        <div class="carousel-item image-box">
+                            <img src="{% static 'images/banner_4.jpg' %}" class="d-block w-100 img" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 order-2 order-lg-1 pt-5 flex-center">
+                <div class="container heading-box">
+                    <p class="mb-2 home-heading ">Shed fast by being Steadfast</p>
+                    <div class="underline"></div>
+                    <p class="mt-4 home-subtitle">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. A iste tempore eum aspernatur earum et, dicta
+                        nihil qui sequi maiores, incidunt distinctio error
+                        delectus praesentium aperiam laboriosam, suscipit nemo!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

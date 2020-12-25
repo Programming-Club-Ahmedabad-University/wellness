@@ -1,0 +1,47 @@
+{% load static %}
+{% load socialaccount %}
+
+<footer>
+	<div class="container pt-4 footer-box">
+		<div class="row">
+			<div class="col-lg-8 flex-center">
+				<div class="row w-100">
+					<div class="col-md-6 mt-5 text-left">
+						<p class="footer-headings">Quick Links</p>
+						<a href="{% url 'home' %}">Home</a></br>
+						<a href="{% url 'blog' %}">Let's Chat</a></br>
+						<a href="{% url 'faqs' %}">FAQs</a></br>
+						{% if request.user.is_authenticated %}
+						<a href="{% url 'dashboard' %}">Dashboard</a></br>
+						<a href="{% url 'questions' %}">Screenng Test</a></br>
+						{% else %}
+						<a href="{% provider_login_url " google" %}?prompt=select_account">Login</a>
+						{% endif %}
+					</div>
+					<div class="col-md-6 mt-5 text-left">
+						<p class="footer-headings">Developers</p>
+						<a href="#">Harshil Mehta</a></br>
+						<a href="#">Raj Mehta</a></br>
+						<a href="#">Samkit Kundalia</a></br>
+						<a href="#">Vinay Kakkad</a></br>
+						<a href="#">Yashil Depani</a></br>
+					</div>
+					<div class="mt-5 line"></div>
+					<div class="row px-4 w-100">
+						<div class="mr-auto"><small>© FitnessFolks</small></div>
+						<div class="ml-auto float-right">
+							<h5>
+								<a href="#"><i class="fab fa-youtube"></i></a>&emsp14;
+								<a href="#"><i class="fas fa-envelope"></i></a>&emsp14;
+								<a href="#"><i class="fab fa-twitter"></i></a>&emsp14;
+							</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 footer-image-box">
+				<img src="{% static 'images/dumbbell.png' %}" alt="" class="footer-img">
+			</div>
+		</div>
+	</div>
+</footer>

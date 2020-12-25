@@ -1,6 +1,0 @@
-{% autoescape off %}
-    Hi {{user.enrollment_number}},
-    Click the given link to reset your CEL password.
-    <br>
-    Link: http://{{domain}}{% url 'set_password' enrollment_number64=encoded_enrollment token=token %}
-{% endautoescape %}

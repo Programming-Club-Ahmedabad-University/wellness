@@ -1,0 +1,21 @@
+<!-- Updates the navigations panel on the basis of the answered questions -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', ()=> {
+        // Required contents
+        const answered_questions = Object.values({{ request.user.extra_details.get_answered_questions|safe }});
+		console.log(answered_questions)
+
+        // For navigatoin panel
+        document.querySelectorAll('.navigation-circles').forEach( (circle) => {
+            if(answered_questions.includes(parseInt(circle.dataset.question_number))) {
+                circle.style.backgroundColor = '#84160f';
+                circle.style.color = 'white';
+            } 
+            circle.onclick = ()=> {
+                var question_number = circle.dataset.question_number;
+                load_question(question_number)
+            };
+        });
+    });
+</script>

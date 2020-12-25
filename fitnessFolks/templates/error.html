@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Error</title>
+{% endblock %}
+
+{% block content %}
+<section id="error-body">
+	<div class="contaier-fluid flex-center main">
+		<div class="container text-center">
+			<h1 class="text-danger">
+				<i class="fas fa-exclamation-triangle"></i>
+				Hmmm...Can't reach this page
+			</h1>
+			{% if error_message %}
+				{{ error_message }}
+			{% else %}
+				There was some problem while loading the page.
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% endblock %}

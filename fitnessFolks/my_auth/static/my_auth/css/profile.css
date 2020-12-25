@@ -1,0 +1,86 @@
+.heading {
+  text-align: center;
+}
+
+.profile-img {
+  width: 15vw;
+}
+
+@media screen and (max-width: 600px) {
+  .profile-img {
+    width: 0px;
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: 36px;
+  }
+}
+
+.fields,
+.form-control {
+  background-color: #ffffff10;
+  border-bottom: 2px solid hsl(0, 0%, 50%);
+  color: hsl(0, 0%, 30%);
+  margin-bottom: 24px;
+}
+
+.form-control:focus {
+  background-color: #ffffff10;
+  border-bottom: 2px solid hsl(0, 0%, 10%);
+  box-shadow: none;
+}
+
+/* Remove arrow form integer field */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* To remove arrow for firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: hsl(0, 0%, 50%);
+  opacity: 1; /* Firefox */
+}
+
+.form-control:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: hsl(0, 0%, 50%);
+}
+
+.form-control::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: hsl(0, 0%, 50%);
+}
+
+.form-control option,
+.form-control option:focus {
+  color: hsl(0, 0%, 30%);
+}
+
+select[multiple=""] option,
+select[multiple=""] option:focus {
+  color: hsl(0, 0%, 30%);
+}
+
+.profile-button {
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid hsl(0, 0%, 90%);
+  background-color: #84160f;
+  color: white;
+}
+
+.profile-button:hover {
+  background-color: white;
+  color: #84160f;
+  border: 2px solid #84160f;
+  transition-property: all;
+  transition-duration: 1s;
+}

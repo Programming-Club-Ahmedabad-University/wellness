@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Register</title>
+<link rel="stylesheet" href="{% static 'my_auth/css/profile.css'%}">
+<script src="{% static 'my_auth/js/edit_profile.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<section id="profile-body">
+	<div class="container my-5 pb-5">
+		<div class="flex-center">
+			<img src="{% static 'images/profile_dumbbell.png' %}" class="profile-img" alt="">
+			<h1 class="mx-auto heading text-dark"><b>Update your Profile</b></h1>
+			<img src="{% static 'images/profile_dumbbell.png' %}" class="profile-img" alt="">
+		</div>
+		<form action='' method='POST' class="form">
+			<div class="row bg-white p-xl-5 p-md-3 p-0 shadow my-5">
+				{% csrf_token %}
+				{% for field in form %}
+					{% if field.label == "Reason for ongoing medicines" %}
+					<div class="col-md-12 text-dark my-2">
+					{% elif field.label == "Menstrual Cycle(No.of days)*" %}
+					<div class="col-md-6 menstrual text-dark my-2">
+					{% else %}
+					<div class="col-md-6 text-dark my-2">
+					{% endif %}
+						&emsp13;<b>{{ field.label }}:</b>
+						{{ field }}
+					</div>
+				{% endfor %}
+			</div>
+			<button type="submit" class="btn mx-auto px-4 profile-button">Update</button>
+		</form>
+	</div>
+</section>
+{% endblock %}

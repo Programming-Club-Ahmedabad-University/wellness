@@ -1,0 +1,43 @@
+{% for category in categories %}
+<div class="modal fade" id="{{category.name|cut:" " }}-modal" tabindex="-1"
+	aria-labelledby="{{category.name|cut:" " }}-modal-label" aria-hidden="true">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"><b>{{ category }}</b></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="accordion" id="{{category.name|cut:" " }}-accordion">
+					{% for question in category.questions.all %}
+					<div class="card">
+						<div class="card-header" id="heading-{{category.name|cut:" " }}-{{forloop.counter}}">
+							<h2 class="mb-0">
+								<button class="btn btn-link btn-block text-left collapsed  accordion-button"
+									type="button" data-toggle="collapse"
+									data-target="#collapse-{{category.name|cut:" " }}-{{forloop.counter}}"
+									aria-expanded="false"
+									aria-controls="collapse-{{category.name|cut:" " }}-{{forloop.counter}}">
+									{{ question.question }}
+								</button>
+							</h2>
+						</div>
+
+						<div id="collapse-{{category.name|cut:" " }}-{{forloop.counter}}" class="collapse"
+							aria-labelledby="heading-{{category.name|cut:" " }}-{{forloop.counter}}"
+							data-parent="#{{category.name|cut:" " }}-accordion">
+							<div class="card-body">
+								{{ question.answer }}
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endfor %}

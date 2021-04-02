@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Screening Test</title>
+<link rel="stylesheet" href="{% static 'screening/css/questions.css' %}">
+{% include 'screening/question_script.html' %}
+{% endblock %}
+
+{% block content %}
+<section id="quesitons-body">
+	<div class="container">
+		<div class="row mx-0 my-5 p-0">
+			<!-- Navigation-Panel -->
+			<div class="col-xl-3 my-4">
+				<div class="shadow bg-white pb-3 navigation-box">
+					<p class="mb-3 box-heading">Navigation</p>
+					<table class="mx-auto">
+						<tr>
+							{% for i in range %}
+							<td>
+								<a href="{% url 'questions' %}?page={{ forloop.counter }}">
+									<div class=" m-2 flex-center navigation-circles"
+										data-question_number="{{forloop.counter}}">
+										{{ forloop.counter }}
+									</div>
+								</a>
+							</td>
+							{% if forloop.counter|divisibleby:"4" %}
+						</tr>
+						<tr>
+							{% endif %}
+							{% endfor %}
+						</tr>
+					</table>
+					<br><br>
+					<div class="flex-center">
+						<a href="{% url 'submit' %}">
+							<button class="btn mx-auto submit-button">Finish</button>
+					</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Questions-box -->
+			<div class="col-xl-9 my-4">
+				<div class="bg-white shadow question-box">
+					<p class="box-heading">Question</p>
+					{% for question in object_list %}
+					<div class="center-mx text-dark my-3 question-text">
+						{{ question.question_text|safe }}
+					</div>
+					<div class="text-dark mx-auto px-2 answer-box">
+						<form action="{% url 'answers' %}" method="post" id="question-form">
+							{% csrf_token %}
+							<input type="hidden" name="answer_no" value="{% if request.GET.page is None %}	1
+								   	{% else %}							{{ request.GET.page }}
+									{% endif %}">
+
+							<!-- If answer-type is 1 -->
+							{% if question.answer_type == "1" %}
+							<input type="hidden" name="answer_type" value="1">
+							<div class="mb-2 text-center">
+								{% for radio in 'abcde' %}
+								<div class="form-check-inline px-5 my-2 mx-auto radio-box">
+									<input class="form-check-input" type="radio" name="value"
+										value="{{ forloop.counter }}" required>
+									<label class="form-check-label" for="value">{{ forloop.counter }}<label>
+								</div>
+								{% endfor %}
+							</div>
+
+							<!-- If answer-type is 2 -->
+							{% else %}
+							<input type="hidden" name="answer_type" value="2">
+							<div class="form-check form-check-inline px-5 my-2 radio-box">
+								<input class="form-check-input" type="radio" name="yes_or_no" value="1" required>
+								<label class="form-check-label" for="yes_or_no">Yes<label>
+							</div>
+							<div class="form-check form-check-inline px-5 my-2 radio-box">
+								<input class="form-check-input" type="radio" name="yes_or_no" value="0" required>
+								<label class="form-check-label" for="yes_or_no">No<label>
+							</div>
+							<textarea name="answer_text" class="form-control my-4 textarea-fields" required></textarea>
+							{% endif %}
+							<div class="flex-center">
+								<button type="submit" class="btn mt-3 mb-3 mx-auto submit-button">Submit</button>
+							</div>
+						</form>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<img src="{% static 'images\screening_img.png' %}" alt="" class="w-100 mt-5">
+</section>
+{% endblock %}

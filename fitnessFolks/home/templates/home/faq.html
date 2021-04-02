@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>FAQ Page</title>
+<link rel="stylesheet" href="{% static 'home/css/faq.css'%}">
+<script src="{% static 'home/js/faq.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<section id="faq-body">
+	<div class="container mb-5 flex-center">
+		<div>
+			<h2 class="text-dark mb-5 text-center mx-auto">How can we help you?</h2>
+			<img src="{% static 'images/faq_img.png' %}" alt="" class="faq-image">
+		</div>
+	</div>
+	<div class="container flex-center mb-5 shadow">
+		<div class="row bg-white p-lg-5 p-md-3 p-1">
+			<div class="col-sm-6 my-3">
+				<div>
+					<h3>
+						<div class="d-flex align-items-end box">
+							<i class="fas fa-dumbbell"></i>&emsp;<p class="mb-0 faq-heading"><a data-toggle="modal"
+									data-target="#General-modal">General</a></p>
+						</div>
+					</h3>
+					<p class="text-secondary">&emsp;&emsp;&emsp;&emsp13;General Questions</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 my-3">
+				<div>
+					<h3>
+						<div class="d-flex align-items-end box">
+							<i class="fas fa-hamburger"></i>&emsp;<p class="mb-0 faq-heading"><a data-toggle="modal"
+									data-target="#Causes-modal">Causes</a></p>
+						</div>
+					</h3>
+					<p class="text-secondary">&emsp;&emsp;&emsp;&emsp13;Questions related to causes</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 my-3">
+				<div>
+					<h3>
+						<div class="d-flex align-items-end box">
+							<i class="fas fa-users"></i>&emsp;<p class="mb-0 faq-heading"><a data-toggle="modal"
+									data-target="#Hereditary-modal">Hereditary</a></p>
+						</div>
+					</h3>
+					<p class="text-secondary">&emsp;&emsp;&emsp;&emsp13;Questions related to hereditary</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 my-3">
+				<div>
+					<h3>
+						<div class="d-flex align-items-end box">
+							<i class="fas fa-weight"></i>&emsp;<p class="mb-0 faq-heading"><a data-toggle="modal"
+									data-target="#Measurement-modal">Measurement</a></p>
+						</div>
+					</h3>
+					<p class="text-secondary">&emsp;&emsp;&emsp;&emsp13;Questions related to measurement</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 my-3">
+				<div>
+					<h3>
+						<div class="d-flex align-items-end box">
+							<i class="fas fa-heartbeat"></i>&emsp;<p class="mb-0 faq-heading"><a data-toggle="modal"
+									data-target="#Health-modal">Health</a></p>
+						</div>
+					</h3>
+					<p class="text-secondary">&emsp;&emsp;&emsp;&emsp13;Questions related to health</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 my-3">
+				<div>
+					<h3>
+						<div class="d-flex align-items-end box">
+							<i class="fas fa-stethoscope"></i>&emsp;<p class="mb-0 faq-heading"><a data-toggle="modal"
+									data-target="#Prevention-modal">Prevention</a></p>
+						</div>
+					</h3>
+					<p class="text-secondary">&emsp;&emsp;&emsp;&emsp13;Questions related to prevention</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 my-3">
+				<div>
+					<h3>
+						<div class="d-flex align-items-end box">
+							<i class="fas fa-weight"></i>&emsp;<p class="mb-0 faq-heading"><a data-toggle="modal"
+									data-target="#WeightLossOptions-modal">Weight Loss Options</a></p>
+						</div>
+					</h3>
+					<p class="text-secondary">&emsp;&emsp;&emsp;&emsp13;Questions related to weight loss options</p>
+				</div>
+			</div>
+
+			<div class="col-sm-6 my-3">
+				<div>
+					<h3>
+						<div class="d-flex align-items-end box">
+							<i class="fas fa-user-md"></i>&emsp;<p class="mb-0 faq-heading"><a data-toggle="modal"
+									data-target="#TreatmentOptions-modal">Treatment Options</a></p>
+						</div>
+					</h3>
+					<p class="text-secondary">&emsp;&emsp;&emsp;&emsp13;Questions related to treatment options</p>
+				</div>
+			</div>
+		</div>
+
+		{% include 'home/faq_modal.html' %}
+</section>
+{% endblock %}

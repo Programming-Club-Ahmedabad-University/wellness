@@ -1,0 +1,30 @@
+.dashboard-img {
+  width: 15vw;
+}
+
+@media screen and (max-width: 600px) {
+  .dashboard-img {
+    width: 0px;
+  }
+}
+
+.charts-container {
+  background-color: white;
+}
+ 
+.dashboard-button {
+  border: 1px solid hsl(0, 0%, 70%);
+    border-bottom: 3px solid hsl(0, 0%, 70%);
+	border-radius: 5px;
+}
+
+.dashboard-button:hover {
+  border-bottom: 3px solid #84160f;
+  transition-property: all;
+  transition-duration: 1s;
+}
+
+.rows {
+  background-color: #ffffff10;
+  border-radius: 32px;
+}

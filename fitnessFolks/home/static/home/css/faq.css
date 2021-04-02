@@ -1,0 +1,47 @@
+.faq-heading {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq-image {
+  width: 600px;
+  justify-self: center;
+  margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .faq-heading {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .faq-image {
+    width: 300px;
+  }
+}
+
+.box {
+  color: #84160f;
+}
+
+.accordion-button, .accordion-button:hover {
+  color: #84160f;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.accordion-button:after {
+  content: '\002B';
+  font-size: 20px;
+  font-weight: bold;
+  color: hsl(0, 0%, 15%);
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212"
+}
